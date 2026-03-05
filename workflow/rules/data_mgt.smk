@@ -1,10 +1,14 @@
 # Rules: data-management
-#
+
+
+#----------------------Dictionaries----------------------
+GENOME = ["m", "f", "combine"] # maternal, fetal, combined genotype data
+
 ## create genotype and phenotype data
 rule get_data:
     input:
         expand(config["out_data"] + "x_{iGen}.feather",
-                iGen=GEN),
+                iGen=GENOME),
         y_data = config["out_data"] + "y_data.feather" 
 
 
@@ -18,6 +22,8 @@ rule reduce_features:
         x_data = config["out_data"] + "x_{iGen}.feather",
     log:
         config["log"] + "data_cleaning/x_{iGen}_data.txt"
+    conda:
+        "workflow/envs/datamngt.yml",
     shell:
         "python {input.script} \
             --out {output.x_data} \
@@ -37,6 +43,8 @@ rule get_raw:
         x_data=config["out_data"] + "x_data.feather",
     log:
         config["log"] + "data_cleaning/get_raw.txt",
+    conda:
+        "workflow/envs/datamngt.yml",
     shell:
         "python {input.script} \
         --out {output.y_data} {output.x_data} \
