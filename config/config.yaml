@@ -1,5 +1,4 @@
-top_list: ["rs2963463", "rs12037376", "rs5991030", "rs4359773", "rs34555419", "rs13161560", "rs6472846", "rs7650602"]
-
+data_path: "/mnt/work/workbench/hedvigs/hedvproj/hed_ML/results/geno/plink"
 
 # Pathways
 root_path      : "/mnt/work/workbench/hedvigs/snake_book/econ/"
@@ -8,9 +7,11 @@ ROOT: "."
 sub2root: "../../"
 rules          : "rules/"
 conda          : "conda/"
-src            : "src/"
+resources      : "resources/"
 log            : "logs/"
-out            : "out/"
+results        : "results/"
+
+
 src_data       : "src/data/"
 src_data_gen   : "src/data/gen/"
 src_data_gen_m : "src/data/gen/maternal/"

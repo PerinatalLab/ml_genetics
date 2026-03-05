@@ -6,12 +6,12 @@
 rule make_tables:
     input:
         expand(config["out_tables"] + "report/{iGen}.byModelSNPs.tex",
-                                        iGen=GEN),
+                                        iGen=GENOME),
         expand(config["out_tables"] + "report/{iSubset}.byModel_{iGen}.tex",
-                                        iSubset = DATA_SUBSET,
-                                        iGen = GEN),
+                                        iSubset = SUBSETS,
+                                        iGen = GENOME),
         expand(config["out_tables"] + "report/{iModel}.byGenSNPs.tex",
-                                        iModel =ALL_MODELS),
+                                        iModel =MODELS),
 
 
         

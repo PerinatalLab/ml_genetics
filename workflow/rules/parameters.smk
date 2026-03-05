@@ -1,10 +1,5 @@
 
 # Rules: parameters
-#-----------------------Dictionaries----------------------
-ALL_MODELS = ["bnb", "knn", "lda", "lrc","nn", "qda", "rfc", "svc"] # all models to be tuned
-GEN = ["m", "f", "combine"] # maternal, fetal, combined genotype data
-FOLDS = [0, 1, 2, 3, 4]
-SUBSETS = ["top5", "top23", "selected", "all"] # feature subsets to be tuned
 
 ## make_params: Helper rule to expand parameters
 rule make_params:
@@ -13,15 +8,15 @@ rule make_params:
                                         iTarget = 'PTD',
                                         iType = 'classic',
                                         iSubset= 'all', 
-                                        iModel= ALL_MODELS,
-                                        iGen= GEN, 
+                                        iModel= MODELS,
+                                        iGen= GENOME, 
                                         iFold = FOLDS),
         expand(config["out_analysis"] + "scores/{iTarget}/classic/{iSubset}/{iModel}_{iGen}_{iFold}_pruned.csv",
                                         iTarget = 'PTD',
                                         iType = 'classic',
                                         iSubset= 'all', 
-                                        iModel= ALL_MODELS,
-                                        iGen= GEN, 
+                                        iModel= MODELS,
+                                        iGen= GENOME, 
                                         iFold = FOLDS),
 
 rule param_pred:
