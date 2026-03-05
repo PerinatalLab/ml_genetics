@@ -1,0 +1,8 @@
+rule all:
+    input:
+        "results/checks/datamngt.txt",
+
+include: "rules/common.smk",
+include: "rules/data_mgt.smk",
+include: "rules/parameters.smk",
+include: "rules/tables.smk",
