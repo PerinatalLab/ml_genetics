@@ -11,8 +11,9 @@ resources      : "resources/"
 log            : "logs/"
 results        : "results/"
 
+src_data         : "resources/data/"
 
-src_data       : "src/data/"
+
 src_data_gen   : "src/data/gen/"
 src_data_gen_m : "src/data/gen/maternal/"
 src_data_gen_f : "src/data/gen/fetal/"
