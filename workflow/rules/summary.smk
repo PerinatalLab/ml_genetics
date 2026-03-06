@@ -29,7 +29,10 @@ rule combine_fold_gen:
     input:
         script = "scripts/src/combined_pred.py",
     output:
-        pred = config["out_tables"] + "comb_score_{iSubset}.csv"
+        pred = config["out_tables"] + "comb_score_{iSubset}.csv",
+    shell:        
+        "python {input.script} --out {output.pred} \
+                --wild {wildcards}"
 
 
 ## append all models to one df per subset, gen and fold
