@@ -2,6 +2,7 @@
 # Rules: tables
 #
 
+
 ## make_tables: Helper rule to expand wildcard and generate all tables
 rule make_tables:
     input:
@@ -12,6 +13,10 @@ rule make_tables:
                                         iGen = GENOME),
         expand(config["out_tables"] + "report/{iModel}.byGenSNPs.tex",
                                         iModel =MODELS),
+    output:
+        config["checks"] + "tables_done.txt"
+    shell:
+        "touch {output[0]}"
 
 
         
@@ -19,7 +24,7 @@ rule make_tables:
 # one gen: all models, all subsets
 rule gen_tables:
     input:
-        script = config["src_tables"] + "make_tex_table.py",
+        script = config["scripts_tables"] + "make_tex_table.py",
         data = config["out_tables"] + "summary/comb_score_full_14.csv"
     output:
         table = config["out_tables"] + "report/{iGen}.byModelSNPs.tex",        
@@ -35,7 +40,7 @@ rule gen_tables:
 # One subset, one gen
 rule subset_tables:
     input:
-        script = config["src_tables"] + "make_tex_table.py",
+        script = config["scripts_tables"] + "make_tex_table.py",
         data   = config["out_tables"] + "summary/comb_score_full_14.csv",
     output:
         table = config["out_tables"] + "report/{iSubset}.byModel_{iGen}.tex",
@@ -51,7 +56,7 @@ rule subset_tables:
 # one model
 rule model_tables:
     input:
-        script = config["src_tables"] + "make_tex_table.py",
+        script = config["scripts_tables"] + "make_tex_table.py",
         data = config["out_tables"] + "summary/comb_score_full_14.csv"
     output:
         table = config["out_tables"] + "report/{iModel}.byGenSNPs.tex"        

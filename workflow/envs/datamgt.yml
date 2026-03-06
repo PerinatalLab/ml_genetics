@@ -1,4 +1,4 @@
-name: datamngt
+name: datamgt
 channels:
   - conda-forge
   - bioconda

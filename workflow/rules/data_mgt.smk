@@ -1,21 +1,21 @@
 # Rules: data-management
 
-
-#----------------------Dictionaries----------------------
-GENOME = ["m", "f", "combine"] # maternal, fetal, combined genotype data
-
 ## create genotype and phenotype data
 rule get_data:
     input:
         expand(config["out_data"] + "x_{iGen}.feather",
                 iGen=GENOME),
         y_data = config["out_data"] + "y_data.feather" 
+    output:
+        config["checks"] + "datamgt.txt",
+    shell:        
+        "touch {output[0]}"
 
 
 ## get_geno extract genotype data
 rule reduce_features:
     input:
-        script = config["src_data_mgt"] + "org_genotyped.py",
+        script = config["scripts_data_mgt"] + "org_genotyped.py",
         x_data = config["out_data"] + "x_data.feather",
         y_data = config["out_data"] + "y_data.feather",
     output:
@@ -23,7 +23,7 @@ rule reduce_features:
     log:
         config["log"] + "data_cleaning/x_{iGen}_data.txt"
     conda:
-        "workflow/envs/datamngt.yml",
+        "workflow/envs/datamgt.yml",
     shell:
         "python {input.script} \
             --out {output.x_data} \
@@ -35,7 +35,7 @@ rule reduce_features:
 ## get_pheno extract phenotype data
 rule get_raw:
     input:
-        script=config["src_data_mgt"] + "get_raw.py",
+        script=config["scripts_data_mgt"] + "get_raw.py",
         y_data=config["src_data_pheno"],
         x_data=config["data_path"],
     output:
@@ -44,7 +44,7 @@ rule get_raw:
     log:
         config["log"] + "data_cleaning/get_raw.txt",
     conda:
-        "workflow/envs/datamngt.yml",
+        "workflow/envs/datamgt.yml",
     shell:
         "python {input.script} \
         --out {output.y_data} {output.x_data} \
