@@ -10,16 +10,19 @@ conda          : "conda/"
 resources      : "resources/"
 log            : "logs/"
 results        : "results/"
+checks         : "results/checks/"
 
 src_data         : "resources/data/"
-out_tables       : "results/tables/"
-checks           : "results/checks/"
+src_data_pheno   : "resources/data/pheno_files/"
+
 scripts_analysis : "workflow/scripts/analysis/"
 scripts_tables   : "workflow/scripts/tables/"
 scripts_data_mgt : "workflow/scripts/data_management/"
+
 out_data         : "results/data/"
 out_data_gen     : "results/data/gen/"
-src_data_pheno   : "resources/data/pheno_files/"
+out_pred         : "results/pred/"
+out_tables       : "results/tables/"
 
 
 src_data_gen   : "src/data/gen/"

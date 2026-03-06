@@ -3,8 +3,10 @@ rule all:
         "results/checks/datamgt.txt",
         "results/checks/prediction_done.txt",
         "results/checks/tables_done.txt",
+        "results/checks/summary_done.txt"
 
 include: "rules/common.smk",
 include: "rules/data_mgt.smk",
 include: "rules/prediction.smk",
+include: "rules/summary.smk",
 include: "rules/tables.smk",
