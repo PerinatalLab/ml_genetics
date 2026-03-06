@@ -3,7 +3,7 @@
 ## create genotype and phenotype data
 rule get_data:
     input:
-        expand(config["out_data"] + "x_{iGen}.feather",
+        expand(config["out_data_gen"] + "x_{iGen}.feather",
                 iGen=GENOME),
         y_data = config["out_data"] + "y_data.feather" 
     output:
