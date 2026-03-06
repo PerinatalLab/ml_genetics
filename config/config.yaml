@@ -19,11 +19,12 @@ scripts_tables   : "scripts/tables/"
 scripts_data_mgt : "scripts/data_management/"
 out_data         : "results/data/"
 out_data_gen     : "results/data/gen/"
+src_data_pheno   : "resources/data/pheno_files/"
+
 
 src_data_gen   : "src/data/gen/"
 src_data_gen_m : "src/data/gen/maternal/"
 src_data_gen_f : "src/data/gen/fetal/"
-src_data_pheno : "src/data/pheno_files/"
 src_data_mgt   : "src/data_management/"
 src_analysis   : "src/analysis/"
 src_lib        : "src/lib/"
