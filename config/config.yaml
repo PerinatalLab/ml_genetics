@@ -18,7 +18,7 @@ scripts_analysis : "scripts/analysis/"
 scripts_tables   : "scripts/tables/"
 scripts_data_mgt : "scripts/data_management/"
 out_data         : "results/data/"
-
+out_data_gen     : "results/data/gen/"
 
 src_data_gen   : "src/data/gen/"
 src_data_gen_m : "src/data/gen/maternal/"
