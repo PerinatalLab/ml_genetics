@@ -30,7 +30,7 @@ rule append_subsets:
 ## append folds and gens to one df per subset
 rule append_fold_gen:
     input:
-        script = config["scripts_postprocess"] + "combined_pred.py",
+        script = config["scripts_postprocess"] + "combine_pred.py",
         data = expand(config["out_pred"] + "avpred_{{iSubset}}_{iGen}_{iFold}.csv",
                                         iGen = GENOME,
                                         iFold = FOLDS
