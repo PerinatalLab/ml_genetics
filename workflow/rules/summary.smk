@@ -14,12 +14,12 @@ rule summarize_results:
 
 rule combine_subsets:
     input:
-        script = "scripts/full_comb.py",
+        script = config["scripts_postprocess"] + "full_comb.py",
         data = expand(config["out_tables"] + "comb_score_{iSubset}_{nModels}.csv",
                                         iSubset = SUBSETS,
                                         nModels = NMODELS),
     output:
-        combined_subsets = config["out_tables"] + "comb_score_{nModels}.csv"
+        combined_subsets = config["out_summary"] + "comb_score_{nModels}.csv"
     shell:
         "python {input.script} --out {output.combined_subsets} \
                 --data {input.data}"
@@ -29,7 +29,7 @@ rule combine_fold_gen:
     input:
         script = "scripts/src/combined_pred.py",
     output:
-        pred = config["out_tables"] + "comb_score_{iSubset}.csv",
+        pred = config["out_summary"] + "comb_score_{iSubset}.csv",
     shell:        
         "python {input.script} --out {output.pred} \
                 --wild {wildcards}"
