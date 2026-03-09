@@ -15,7 +15,7 @@ rule summarize_results:
 rule combine_subsets:
     input:
         script = config["scripts_postprocess"] + "full_comb.py",
-        data = expand(config["out_tables"] + "comb_score_{iSubset}_{nModels}.csv",
+        data = expand(config["out_summary"] + "comb_score_{iSubset}_{nModels}.csv",
                                         iSubset = SUBSETS,
                                         nModels = NMODELS),
     output:
