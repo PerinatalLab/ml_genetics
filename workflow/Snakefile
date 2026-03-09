@@ -5,6 +5,7 @@ rule all:
         "results/checks/summary_done.txt",
         "results/checks/tables_done.txt",
 
+include: "rules/dag.smk",
 include: "rules/common.smk",
 include: "rules/data_mgt.smk",
 include: "rules/prediction.smk",
