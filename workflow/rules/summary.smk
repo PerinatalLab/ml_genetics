@@ -5,9 +5,10 @@
 ## summarize results: Helper rule to expand parameters
 rule summarize_results:
     input:
-        expand(config["out_summary"] + "comb_score_{nModels}.csv",
+        expand(config["out_summary"] + "combined_{nModels}.csv",
                                         nModels = NMODELS
                                         ),
+        config["out_summary"] + "complete_summary.csv",
     output:
         config["checks"] + "summary_done.txt",
     shell:        "touch {output[0]}"
@@ -43,11 +44,12 @@ rule append_fold_gen:
 rule combine_models:
     input:
         script = config["scripts_postprocess"] + "full_comb.py",
-        data = expand(config["out_pred"] + "avpred_{{iSubset}}_{iGen}_{iFold}.csv",
+        data = expand(config["out_pred"] + "avpred_{iSubset}_{iGen}_{iFold}.csv",
+                                        iSubset = SUBSETS,
                                         iGen = GENOME,
                                         iFold = FOLDS),
     output:
-        combined_models = config["out_summary"] + "combined_{iSubset}_{nModels}.csv"
+        combined_models = config["out_summary"] + "combined_{nModels}.csv"
     shell:
         "python {input.script} --out {output.combined_models} \
                 --data {input.data}"
