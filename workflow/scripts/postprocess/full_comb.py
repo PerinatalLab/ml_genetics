@@ -192,9 +192,9 @@ if __name__ == '__main__':
                                        
     
     
-    save_file = path + f'out/tables/comb_score_{model}.csv'
+  #  save_file = path + f'out/tables/comb_score_{model}.csv'
     
     score_df = pd.DataFrame.from_records(scores)
-    score_df.to_csv(save_file, sep='\t', float_format='%.5f', index=False)
+    score_df.to_csv(out_file, sep='\t', float_format='%.5f', index=False)
     
     
