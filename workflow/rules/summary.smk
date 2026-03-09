@@ -43,10 +43,11 @@ rule append_fold_gen:
 rule combine_models:
     input:
         script = config["scripts_postprocess"] + "full_comb.py",
-        data = expand(config["out_pred"] + "avpred_{{iSubset}}_{{iGen}}_{iFold}.csv",
+        data = expand(config["out_pred"] + "avpred_{{iSubset}}_{iGen}_{iFold}.csv",
+                                        iGen = GENOME,
                                         iFold = FOLDS),
     output:
-        combined_models = config["out_summary"] + "comb_score_{nModels}.csv"
+        combined_models = config["out_summary"] + "combined_{iSubset}_{nModels}.csv"
     shell:
         "python {input.script} --out {output.combined_models} \
                 --data {input.data}"
