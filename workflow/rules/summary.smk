@@ -5,7 +5,7 @@
 ## summarize results: Helper rule to expand parameters
 rule summarize_results:
     input:
-        expand(config["out_tables"] + "comb_score_{nModels}.csv",
+        expand(config["out_summary"] + "comb_score_{nModels}.csv",
                                         nModels = NMODELS
                                         ),
     output:
@@ -27,7 +27,7 @@ rule combine_subsets:
 ## append folds and gens to one df per subset
 rule combine_fold_gen:
     input:
-        script = "scripts/src/combined_pred.py",
+        script = config["scripts_postprocess"] + "combined_pred.py",
     output:
         pred = config["out_summary"] + "comb_score_{iSubset}.csv",
     shell:        
@@ -38,7 +38,7 @@ rule combine_fold_gen:
 ## append all models to one df per subset, gen and fold
 rule combine_models:
     input:
-        script = "scripts/src/combine_runs.py",
+        script = config["scripts_postprocess"] + "combine_runs.py",
     
     output:
         average_pred = config["out_pred"] + "avpred_{iSubset}_{iGen}_{iFold}.csv"

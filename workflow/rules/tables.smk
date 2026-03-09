@@ -25,7 +25,7 @@ rule make_tables:
 rule gen_tables:
     input:
         script = config["scripts_tables"] + "make_tex_table.py",
-        data = config["out_tables"] + "summary/comb_score_full_14.csv"
+        data = config["out_summary"] + "comb_score_full_14.csv"
     output:
         table = config["out_tables"] + "report/{iGen}.byModelSNPs.tex",        
     log:
@@ -41,7 +41,7 @@ rule gen_tables:
 rule subset_tables:
     input:
         script = config["scripts_tables"] + "make_tex_table.py",
-        data   = config["out_tables"] + "summary/comb_score_full_14.csv",
+        data   = config["out_summary"] + "comb_score_full_14.csv",
     output:
         table = config["out_tables"] + "report/{iSubset}.byModel_{iGen}.tex",
     log:
@@ -57,7 +57,7 @@ rule subset_tables:
 rule model_tables:
     input:
         script = config["scripts_tables"] + "make_tex_table.py",
-        data = config["out_tables"] + "summary/comb_score_full_14.csv"
+        data = config["out_summary"] + "comb_score_full_14.csv"
     output:
         table = config["out_tables"] + "report/{iModel}.byGenSNPs.tex"        
     log:
