@@ -3,9 +3,10 @@ import pandas as pd
 import numpy as np
 #import yaml
 import pyarrow.feather as feather
-from scripts.data_management import read_files
 import sys
 sys.path.append('/mnt/work/hedvigs/grepos/plab_workflow/workflow/scripts/')
+from data_management import read_files
+
 hostname = os.uname().nodename
 if hostname == 'BlackBeast':
     path = '/home/hedvigs/snake_book/econ'
