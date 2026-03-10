@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 #import yaml
 import pyarrow.feather as feather
-
+from scripts.data_management import read_files
 import sys
 sys.path.append('/mnt/work/hedvigs/grepos/plab_workflow/workflow/scripts/')
 hostname = os.uname().nodename
