@@ -22,6 +22,10 @@ rule append_subsets:
                                         ),
     output:
         combined_subsets = config["out_summary"] + "complete_summary.csv"
+    log:
+        config["log"] + "summary/complete_summary.txt"
+    conda:
+        "../envs/summary.yml",
     shell:
         "python {input.script} --out {output.combined_subsets} \
                 --data {input.data}"
@@ -37,10 +41,15 @@ rule append_fold_gen:
                                         ),
     output:
         pred = config["out_summary"] + "comb_score_{iSubset}.csv",
+    log:
+        config["log"] + "summary/comb_score_{iSubset}.txt"
+    conda:
+        "../envs/summary.yml",
     shell:        
         "python {input.script} --out {output.pred} \
                 --wild {wildcards}"
 
+## combine different number of models.
 rule combine_models:
     input:
         script = config["scripts_postprocess"] + "full_comb.py",
@@ -50,6 +59,10 @@ rule combine_models:
                                         iFold = FOLDS),
     output:
         combined_models = config["out_summary"] + "combined_{nModels}.csv"
+    log:
+        config["log"] + "summary/avpred_{iSubset}_{iGen}_{iFold}.txt"
+    conda:
+        "../envs/summary.yml",
     shell:
         "python {input.script} --out {output.combined_models} \
                 --data {input.data}"
@@ -61,7 +74,11 @@ rule append_models:
         script = config["scripts_postprocess"] + "combine_runs.py",
     
     output:
-        average_pred = config["out_pred"] + "avpred_{iSubset}_{iGen}_{iFold}.csv"
+        average_pred = config["out_pred"] + "avpred_{iSubset}_{iGen}_{iFold}.csv",
+    log:
+        config["log"] + "summary/avpred_{iSubset}_{iGen}_{iFold}.txt"
+    conda:
+        "../envs/summary.yml",
     shell:
         "python {input.script} --out {output.average_pred} \
                 --wild {wildcards}"

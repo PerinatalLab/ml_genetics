@@ -31,7 +31,7 @@ rule param_pred:
     log:
         config["log"] + "analysis/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
     conda:
-        "workflow/envs/analysis.yml",
+        "../envs/analysis.yml",
     shell:
         "python {input.script} \
         --out {output.best_params} \
