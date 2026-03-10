@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
-import yaml
+#import yaml
 import pyarrow.feather as feather
 
 import sys
@@ -22,8 +22,8 @@ elif hostname == 'work-computer':
     site = 'server'
     sys.path.append(path)
     
-elif hostname == 'wl-241113-007':
-    path = '/home/hedvigs/wslGit/snake_book/econ'
+elif hostname == 'SilverFlex':
+    path = '/home/hedvigs/gitrepos/plab_workflow/workflow/scripts/'
     site = 'silverFlex'
     sys.path.append(path)
 
@@ -91,7 +91,7 @@ def read_config(access_name, path='/mnt/work/workbench/hedvigs/snake_book/econ')
 
 def fold_summary(y_data=None, k=5):
     if not isinstance(y_data, pd.DataFrame):
-        y_path= '/mnt/work/workbench/hedvigs/snake_book/econ/out/data/y_data.feather'
+        y_path= 'results/data/y_data.feather' #'/mnt/work/workbench/hedvigs/snake_book/econ/out/data/y_data.feather'
         y_data = feather.read_feather(y_path)
 
     fold_summary = pd.DataFrame()
@@ -114,8 +114,9 @@ def fold_summary(y_data=None, k=5):
     return fold_summary
 
 if __name__ == '__main__':
-    from src.data_management.read_files import fold_data
-    y_path= '/mnt/work/workbench/hedvigs/snake_book/econ/out/data/y_data.feather'
+    print(hostname)
+    from data_management.read_files import fold_data
+    y_path= 'results/data/y_data.feather' #'/mnt/work/workbench/hedvigs/snake_book/econ/out/data/y_data.feather'
     y_data = feather.read_feather(y_path)
     tenfold_y = fold_data(y_data, k=10)
     fs = fold_summary(y_data=tenfold_y, k=10)
