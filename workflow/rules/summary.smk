@@ -60,7 +60,7 @@ rule combine_models:
     output:
         combined_models = config["out_summary"] + "combined_{nModels}.csv"
     log:
-        config["log"] + "summary/avpred_{iSubset}_{iGen}_{iFold}.txt"
+        config["log"] + "summary/combined_{nModels}.txt"
     conda:
         "../envs/summary.yml",
     shell:
