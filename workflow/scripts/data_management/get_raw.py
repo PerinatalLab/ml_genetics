@@ -1,13 +1,13 @@
+import time
+import argparse
 import sys
-
-sys.path.append("/mnt/work/workbench/hedvigs/snake_book/econ")
-
 import pandas as pd
 import numpy as np
-from src.data_management.setup_data import get_y_data, fold_data, get_x_data
-import argparse
 import pyarrow.feather as feather
-import time
+
+sys.path.append("/mnt/work/hedvigs/grepos/plab_workflow/workflow/scripts/")
+
+from data_management.setup_data import get_y_data, fold_data, get_x_data
 
 
 parser = argparse.ArgumentParser()
