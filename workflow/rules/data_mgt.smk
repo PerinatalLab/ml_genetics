@@ -1,7 +1,7 @@
 # Rules: data-management
 
 ## create genotype and phenotype data
-rule get_data:
+rule data_mgt:
     input:
         expand(config["out_data_gen"] + "x_{iGen}.feather",
                 iGen=GENOME),
