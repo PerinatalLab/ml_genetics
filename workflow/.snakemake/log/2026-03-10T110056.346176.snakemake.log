@@ -1,2 +1,0 @@
-WorkflowError in file "/mnt/work/hedvig/grepos/plab_workflow/workflow/rules/common.smk", line 5:
-Workflow defines configfile config/config.yaml but it is not present or accessible (full checked path: /mnt/work/hedvig/grepos/plab_workflow/workflow/config/config.yaml).
