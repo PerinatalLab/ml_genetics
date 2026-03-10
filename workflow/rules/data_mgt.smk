@@ -23,7 +23,7 @@ rule reduce_features:
     log:
         config["log"] + "data_cleaning/x_{iGen}_data.txt"
     conda:
-        "workflow/envs/datamgt.yml",
+        "../envs/datamgt.yml",
     shell:
         "python {input.script} \
             --out {output.x_data} \
@@ -44,7 +44,7 @@ rule get_raw:
     log:
         config["log"] + "data_cleaning/get_raw.txt",
     conda:
-        "workflow/envs/datamgt.yml",
+        "../envs/datamgt.yml",
     shell:
         "python {input.script} \
         --out {output.y_data} {output.x_data} \
