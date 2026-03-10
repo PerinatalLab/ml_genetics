@@ -22,7 +22,7 @@ scripts_postprocess : "workflow/scripts/postprocess/"
 
 out_data         : "results/data/"
 out_data_gen     : "results/data/gen/"
-out_pred         : "results/pred/"
+out_pred         : "results/prediction/"
 out_summary      : "results/summary/"
 out_tables       : "results/tables/"
 

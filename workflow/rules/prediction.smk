@@ -10,7 +10,7 @@ rule make_prediction:
                                         iModel= MODELS,
                                         iGen= GENOME, 
                                         iFold = FOLDS),
-        expand(config["out_analysis"] + "scores/{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.csv",
+        expand(config["out_pred"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.csv",
                                         iTarget = 'PTD',
                                         iSubset= SUBSETS, 
                                         iModel= MODELS,
@@ -27,9 +27,9 @@ rule param_pred:
         script      = config["scripts_analysis"] + "tune_prediction.py",
     output:
         best_params = config["out_params"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
-        score_dir   = config["out_analysis"] + "scores/{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.csv"
+        score_dir   = config["out_pred"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.csv"
     log:
-        config["log"] + "analysis/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
+        config["log"] + "prediction/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
     conda:
         "../envs/analysis.yml",
     shell:
