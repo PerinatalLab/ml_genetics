@@ -1,16 +1,11 @@
 import os
 import pandas as pd
-#from pandas_plink import read_plink
 import numpy as np
-#from sklearn.model_selection import StratifiedKFold, train_test_split
-#from sklearn.feature_selection import SelectKBest, f_classif, f_regression
-#from sklearn.decomposition import PCA
-import pyarrow.feather as feather
-import warnings
 import yaml
+import pyarrow.feather as feather
 
 import sys
-sys.path.append('/mnt/work/workbench/hedvigs/snake_book/econ')
+sys.path.append('/mnt/work/hedvigs/grepos/plab_workflow/workflow/scripts/')
 hostname = os.uname().nodename
 if hostname == 'BlackBeast':
     path = '/home/hedvigs/snake_book/econ'
@@ -92,12 +87,6 @@ def read_config(access_name, path='/mnt/work/workbench/hedvigs/snake_book/econ')
 
         data = yaml.load(yamlfile, Loader=yaml.FullLoader)
         return data[access_name]
-
-def rename_y_col(old_str="N_GA", new_str="NGA"):
-    y_path= '/mnt/work/workbench/hedvigs/snake_book/econ/out/data/y_data.feather'
-    y_data = feather.read_feather(y_path)
-    y_data.columns = y_data.columns.str.replace(old_str, new_str)
-    feather.write_feather(y_data, y_path)
 
 
 def fold_summary(y_data=None, k=5):
