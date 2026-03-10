@@ -17,3 +17,6 @@ wildcard_constraints:
     iFold = "|".join(map(str, FOLDS)),
     iSubset = "|".join(SUBSETS),
     nModels = "|".join(map(str, NMODELS))
+
+# -------------------------Variables---------------------- #
+logAll = " 2>&1 | tee -a {log}"
