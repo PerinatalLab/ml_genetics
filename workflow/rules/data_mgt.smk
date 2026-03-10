@@ -3,7 +3,7 @@
 ## create genotype and phenotype data
 rule data_mgt:
     input:
-        expand(config["out_data_gen"] + "x_{iGen}.feather",
+        expand(config["out_data"] + "x_{iGen}.feather",
                 iGen=GENOME),
         y_data = config["out_data"] + "y_data.feather" 
     output:
@@ -19,7 +19,7 @@ rule reduce_features:
         x_data = config["out_data"] + "x_data.feather",
         y_data = config["out_data"] + "y_data.feather",
     output:
-        x_data = config["out_data_gen"] + "x_{iGen}.feather",
+        x_data = config["out_data"] + "x_{iGen}.feather",
     log:
         config["log"] + "data_cleaning/x_{iGen}_data.txt"
     conda:
