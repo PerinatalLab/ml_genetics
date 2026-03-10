@@ -18,3 +18,4 @@ results/**
 !.test
 !LICENSE
 !README.md
+.snakemake
