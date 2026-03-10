@@ -3,7 +3,7 @@
 #
 
 ## summarize results: Helper rule to expand parameters
-rule summarize_results:
+rule make_summary:
     input:
         expand(config["out_summary"] + "combined_{nModels}.csv",
                                         nModels = NMODELS
