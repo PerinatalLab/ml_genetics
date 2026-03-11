@@ -1,12 +1,11 @@
-import sys
-
-sys.path.append("/mnt/work/workbench/hedvigs/snake_book/econ")
-
-from src.data_management import setup_data as gt
 import argparse
+import sys
 import pyarrow.feather as feather
-from src.data_management.parsing_set import ParseKwargs
-import time
+
+sys.path.append("/mnt/work/hedvigs/grepos/plab_workflow/workflow/scripts/")
+
+from data_management import setup_data as gt
+from data_management.parsing_set import ParseKwargs
 
 """   
     x_in = "/mnt/work/workbench/hedvigs/hedvproj/hed_ML/results/geno/plink"
