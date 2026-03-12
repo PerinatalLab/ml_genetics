@@ -1,8 +1,8 @@
-#import warnings
+import warnings
 import pandas as pd
 import numpy as np
 import pyarrow.feather as feather
-#from pandas_plink import read_plink
+from pandas_plink import read_plink
 from sklearn.model_selection import StratifiedKFold, train_test_split
 
 
