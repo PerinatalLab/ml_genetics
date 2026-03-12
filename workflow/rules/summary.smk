@@ -72,6 +72,10 @@ rule combine_models:
 rule append_models:
     input:
         script = config["scripts_postprocess"] + "combine_runs.py",
+        data = expand(config["out_pred"] + "{iTarget}/{{iSubset}}/{iModel}_{{iGen}}_{{iFold}}.csv",
+                                        iTarget = 'PTD', 
+                                        iModel= MODELS
+                                        ),
     
     output:
         average_pred = config["out_pred"] + "avpred_{iSubset}_{iGen}_{iFold}.csv",
@@ -80,6 +84,8 @@ rule append_models:
     conda:
         "../envs/summary.yml",
     shell:
-        "python {input.script} --out {output.average_pred} \
-                --wild {wildcards}"
+        "python {input.script} \
+        --out {output.average_pred} \
+        --data {input.data} \
+        --wild {wildcards}"
                                         
