@@ -1,11 +1,11 @@
 import argparse
-import sys
+#import sys
 import pyarrow.feather as feather
 
 # sys.path.append("/mnt/work/hedvigs/grepos/plab_workflow/workflow/scripts/")
 
 # from data_management import setup_data as gt
-import setup_data as gt
+import read_files as gt
 
 # from data_management.parsing_set import ParseKwargs
 from parsing_set import ParseKwargs
