@@ -7,8 +7,8 @@ import pyarrow.feather as feather
 
 #sys.path.append("/mnt/work/hedvigs/grepos/plab_workflow")
 print(sys.path)
-from setup_data import get_y_data, fold_data, get_x_data
-
+from setup_data import fold_data
+from read_files import get_x_data, get_y_data
 
 parser = argparse.ArgumentParser()
 
