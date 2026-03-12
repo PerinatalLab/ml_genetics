@@ -18,7 +18,7 @@ rule filegraph:
     output:
         "filegraph.pdf",
     shell:
-        "snakemake --snakefile ../Snakefile --filegraph | dot -Tpdf > {output}"
+        "snakemake --snakefile ./workflow/Snakefile --filegraph | dot -Tpdf > {output}"
 
 
 ## rulegraph          : create the graph of how rules piece together
@@ -26,7 +26,7 @@ rule rulegraph:
     output:
         "rulegraph.pdf",
     shell:
-        "snakemake --snakefile ../Snakefile --rulegraph | dot -Tpdf > {output}"
+        "snakemake --snakefile ./workflow/Snakefile --rulegraph | dot -Tpdf > {output}"
 
 
 ## rulegraph_to_png
