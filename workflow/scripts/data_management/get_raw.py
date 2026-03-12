@@ -6,9 +6,9 @@ import numpy as np
 import pyarrow.feather as feather
 
 #sys.path.append("/mnt/work/hedvigs/grepos/plab_workflow")
-print(sys.path)
-from setup_data import fold_data
-from read_files import get_x_data, get_y_data
+#print(sys.path)
+
+from read_files import get_x_data, get_y_data, fold_data
 
 parser = argparse.ArgumentParser()
 
