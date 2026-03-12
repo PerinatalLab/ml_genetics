@@ -307,7 +307,7 @@ def divide_gen(x_data, y_data, gen="m", col_name="Full_sentrix", col_name_f="Ful
         sen = (isec for isec in y_data["Full_sentrix_f"])
     else:
         sen = (isec for isec in y_data["Full_sentrix"])
-
+    print(x_data.index)
     x_data_gen = x_data.loc[sen]
     x_data_gen.dropna(axis=1, inplace=True)
 
