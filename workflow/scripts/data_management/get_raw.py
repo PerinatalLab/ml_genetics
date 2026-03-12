@@ -20,7 +20,6 @@ parser.add_argument("-o", "--out", nargs="*")
 parser.add_argument("-p", "--pheno")
 
 args = parser.parse_known_args()
-print(args)
 args = args[0]
 
 out_x = args.out[1]
