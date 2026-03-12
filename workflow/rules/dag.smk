@@ -10,7 +10,7 @@ rule dag:
     output:
         "dag.pdf",
     shell:
-        "snakemake --snakefile ../Snakefile --dag | dot -Tpdf > {output}"
+        "snakemake --snakefile ./Snakefile --dag | dot -Tpdf > {output}"
 
 ## filegraph          : create the file graph as pdf from the Snakefile
 ##                     (i.e what files are used and produced per rule)

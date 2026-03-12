@@ -5,7 +5,6 @@ import numpy as np
 import pyarrow.feather as feather
 import sys
 sys.path.append('/mnt/work/hedvig/grepos/plab_workflow/workflow/scripts/')
-from data_management import read_files
 
 hostname = os.uname().nodename
 if hostname == 'BlackBeast':
