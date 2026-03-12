@@ -1,6 +1,6 @@
 import time
 import argparse
-import sys
+#import sys
 import pandas as pd
 import numpy as np
 import pyarrow.feather as feather

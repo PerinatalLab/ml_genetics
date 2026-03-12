@@ -1,29 +1,29 @@
 # Rules: data-management
 
+
 ## create genotype and phenotype data
 rule data_mgt:
     input:
-        expand(config["out_data"] + "x_{iGen}.feather",
-                iGen=GENOME),
-        y_data = config["out_data"] + "y_data.feather" 
+        expand(config["out_data"] + "x_{iGen}.feather", iGen=GENOME),
+        y_data=config["out_data"] + "y_data.feather",
     output:
         config["checks"] + "datamgt.txt",
-    shell:        
+    shell:
         "touch {output[0]}"
 
 
 ## get_geno extract genotype data
 rule reduce_features:
     input:
-        script = config["scripts_data_mgt"] + "org_genotyped.py",
-        x_data = config["out_data"] + "x_data.feather",
-        y_data = config["out_data"] + "y_data.feather",
+        script=config["scripts_data_mgt"] + "org_genotyped.py",
+        x_data=config["out_data"] + "x_data.feather",
+        y_data=config["out_data"] + "y_data.feather",
     output:
-        x_data = config["out_data"] + "x_{iGen}.feather",
+        x_data=config["out_data"] + "x_{iGen}.feather",
     log:
-        config["log"] + "data_cleaning/x_{iGen}_data.txt"
+        config["log"] + "data_cleaning/x_{iGen}_data.txt",
     conda:
-        "../envs/datamgt.yml",
+        "../envs/datamgt.yml"
     shell:
         "python {input.script} \
             --out {output.x_data} \
@@ -31,6 +31,7 @@ rule reduce_features:
             --pheno {input.y_data} \
             --wild {wildcards} \
                 > {log} {logAll}"
+
 
 ## get_pheno extract phenotype data
 rule get_raw:
@@ -44,7 +45,7 @@ rule get_raw:
     log:
         config["log"] + "data_cleaning/get_raw.txt",
     conda:
-        "../envs/datamgt.yml",
+        "../envs/datamgt.yml"
     shell:
         "python {input.script} \
         --out {output.y_data} {output.x_data} \
@@ -75,7 +76,6 @@ rule get_raw:
 #             --list_top {params.list_top} \
 #             --wild {wildcards} \
 #                 > {log} {logAll}"
-
 # # get_full_pheno extract phenotype data for all maternal/fetal samples
 # rule get_full_pheno:
 #     input:

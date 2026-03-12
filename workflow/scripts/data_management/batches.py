@@ -1,10 +1,12 @@
-import os
-import pandas as pd
-import numpy as np
+# import os
+#import pandas as pd
+#import numpy as np
 import pyarrow.feather as feather
-from src.data_management.resampling import sampling
-import warnings
 
+# from src.data_management.resampling import sampling
+from resampling import sampling
+
+# import warnings
 
 
 def get_batch(x_data, y_data, fold=0, gen="m"):
@@ -119,9 +121,6 @@ def get_ybatch(y_data, fold=0):
     return y_train, y_test
 
 
-
-
-
 def get_xbatch(x_data, y_data, fold=0, gen="m"):
     """
     Generate train and test batches of x_data based on y_data and fold.
@@ -153,9 +152,6 @@ def get_xbatch(x_data, y_data, fold=0, gen="m"):
     [x_train, x_test], _ = get_batch(x_data, y_data, fold=fold, gen=gen)
 
     return x_train, x_test
-
-
-
 
 
 def get_sampled_batch(x_file, y_file, fold=0, gen="m", method="under"):
