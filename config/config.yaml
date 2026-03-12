@@ -11,6 +11,7 @@ resources      : "resources/"
 log            : "logs/"
 results        : "results/"
 checks         : "results/checks/"
+scripts        : "workflow/scripts/"
 
 src_data         : "resources/data/"
 src_data_pheno   : "resources/data/pheno_files/"
