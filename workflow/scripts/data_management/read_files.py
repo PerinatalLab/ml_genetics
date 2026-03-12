@@ -1,5 +1,6 @@
 import warnings
 import pandas as pd
+from requests import head
 import numpy as np
 import pyarrow.feather as feather
 from pandas_plink import read_plink
@@ -307,7 +308,7 @@ def divide_gen(x_data, y_data, gen="m", col_name="Full_sentrix", col_name_f="Ful
         sen = (isec for isec in y_data["Full_sentrix_f"])
     else:
         sen = (isec for isec in y_data["Full_sentrix"])
-    print(x_data.index)
+    head(x_data)
     x_data_gen = x_data.loc[sen]
     x_data_gen.dropna(axis=1, inplace=True)
 
