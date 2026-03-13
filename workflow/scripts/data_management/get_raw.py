@@ -67,6 +67,6 @@ else:
     print("took", time.time() - start_time)
 
     y_data = fold_data(y_data, k=5)
-
+    print(x_data.head())
     feather.write_feather(y_data, out_y)
     feather.write_feather(x_data, out_x)
