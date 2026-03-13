@@ -3,6 +3,7 @@ import argparse
 #import sys
 import pandas as pd
 import numpy as np
+import pyarrow as pa
 import pyarrow.feather as feather
 
 #sys.path.append("/mnt/work/hedvigs/grepos/plab_workflow")
