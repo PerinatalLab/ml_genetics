@@ -14,23 +14,26 @@ rule make_prediction:
     shell:
         "touch {output[0]}"
 
+
 ## make_params: Helper rule to expand parameters
 rule models_done:
     input:
         expand(
-        config["checks"] + "chunks/{{iTarget}}/{{iSubset}}/{iModel}_done.txt",
+            config["checks"] + "chunks/{{iTarget}}/{{iSubset}}/{iModel}_done.txt",
             iModel=MODELS,
-        ), 
+        ),
     output:
         config["checks"] + "chunks/{iTarget}/{iSubset}_done.txt",
     shell:
         "touch {output[0]}"
 
+
 ## make_params: Helper rule to expand parameters
 rule gens_done:
     input:
         expand(
-        config["checks"] + "chunks/{{iTarget}}/{{iSubset}}/{{iModel}}/{iGen}_done.txt",
+            config["checks"]
+            + "chunks/{{iTarget}}/{{iSubset}}/{{iModel}}/{iGen}_done.txt",
             iGEN=GENOME,
         ),
     output:
@@ -38,22 +41,24 @@ rule gens_done:
     shell:
         "touch {output[0]}"
 
+
 ## folds_done: Helper rule to expand parameters
 rule folds_done:
     input:
         expand(
-            config["out_params"] + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}.json",
+            config["out_params"]
+            + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}.json",
             iFold=FOLDS,
         ),
         expand(
-            config["out_pred"] + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}.csv",
+            config["out_pred"]
+            + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}.csv",
             iFold=FOLDS,
         ),
     output:
         config["checks"] + "chunks/{iTarget}/{iSubset}/{iModel}/{iGen}_done.txt",
     shell:
         "touch {output[0]}"
-
 
 
 ### param_pred: get best parameters and predictions for each fold, subset, model and genome
@@ -75,5 +80,3 @@ rule param_pred:
             --utils {output.score_dir} \
             --wild {wildcards} \
                 > {log} {logAll}"
-
-
