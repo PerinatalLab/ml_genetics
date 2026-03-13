@@ -1,3 +1,6 @@
+localrules: make_prediction, models_done, gens_done, folds_done
+
+# Rules
 rule all:
     input:
         "results/checks/datamgt.txt",
