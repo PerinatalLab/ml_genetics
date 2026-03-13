@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import glob
 
-configfile: "./config/config.yaml"
+configfile: "config/config.yaml"
 
 #-----------------------Dictionaries----------------------
 MODELS = ["bnb", "knn", "lda", "lrc","nn", "qda", "rfc", "svc"] # all models to be tuned
