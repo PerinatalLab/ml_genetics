@@ -1,7 +1,7 @@
 # Rules: parameters
 
 
-## make_params: Helper rule to expand parameters
+## make_prediction: Helper rule to expand parameters
 rule make_prediction:
     input:
         expand(
@@ -15,7 +15,7 @@ rule make_prediction:
         "touch {output[0]}"
 
 
-## make_params: Helper rule to expand parameters
+## models_done: Helper rule to expand parameters
 rule models_done:
     input:
         expand(
@@ -28,7 +28,7 @@ rule models_done:
         "touch {output[0]}"
 
 
-## make_params: Helper rule to expand parameters
+## gens_done: Helper rule to expand parameters
 rule gens_done:
     input:
         expand(

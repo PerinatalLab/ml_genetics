@@ -4,7 +4,7 @@ channels:
   - bioconda
   - defaults
 dependencies:
-  - python=3.10
+  - python
   - numpy
   - pandas
   - scikit-learn
@@ -12,7 +12,5 @@ dependencies:
   - argparse
   - time
   - optuna
-  - json
   - pyarrow
   - imbalanced-learn
-  - logging
