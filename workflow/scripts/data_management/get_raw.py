@@ -68,5 +68,7 @@ else:
 
     y_data = fold_data(y_data, k=5)
     print(x_data.head())
+    x_data = pa.Table.from_pandas(x_data, preserve_index=True)
+    y_data = pa.Table.from_pandas(y_data, preserve_index=True)
     feather.write_feather(y_data, out_y)
     feather.write_feather(x_data, out_x)
