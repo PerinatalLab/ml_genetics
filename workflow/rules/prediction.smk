@@ -5,26 +5,34 @@
 rule make_prediction:
     input:
         expand(
-            config["out_params"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
+            config["checks"] + "chunks/{iTarget}_{iSubset}_done.txt",
             iTarget="PTD",
             iSubset=SUBSETS,
-            iModel=MODELS,
-            iGen=GENOME,
-            iFold=FOLDS,
-        ),
-        expand(
-            config["out_pred"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.csv",
-            iTarget="PTD",
-            iSubset=SUBSETS,
-            iModel=MODELS,
-            iGen=GENOME,
-            iFold=FOLDS,
         ),
     output:
         config["checks"] + "prediction_done.txt",
     shell:
         "touch {output[0]}"
 
+## make_params: Helper rule to expand parameters
+rule subset_done:
+    input:
+        expand(
+            config["out_params"] + "{{iTarget}}/{{iSubset}}/{iModel}_{iGen}_{iFold}.json",
+            iModel=MODELS,
+            iGen=GENOME,
+            iFold=FOLDS,
+        ),
+        expand(
+            config["out_pred"] + "{{iTarget}}/{{iSubset}}/{iModel}_{iGen}_{iFold}.csv",
+            iModel=MODELS,
+            iGen=GENOME,
+            iFold=FOLDS,
+        ),
+    output:
+        config["checks"] + "chunks/{iTarget}_{iSubset}_done.txt",
+    shell:
+        "touch {output[0]}"
 
 ### param_pred: get best parameters and predictions for each fold, subset, model and genome
 rule param_pred:
@@ -44,3 +52,5 @@ rule param_pred:
             --utils {output.score_dir} \
             --wild {wildcards} \
                 > {log} {logAll}"
+
+
