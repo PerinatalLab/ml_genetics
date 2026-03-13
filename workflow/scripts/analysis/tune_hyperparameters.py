@@ -38,16 +38,16 @@ from sklearn.metrics import (
     make_scorer,
     confusion_matrix
 )
+from sklearn.exceptions import ConvergenceWarning
 
 import sys
 sys.path.append('/mnt/work/workbench/hedvigs/snake_book/econ')
-from src.data_management.subsets import load_data
-from src.data_management.resampling import sampling
-from src.data_management.parsing_set import ParseKwargs
-from src.data_management.logging_data import log_study_results, log_single_results
-from src.data_management.setup_data import read_config
-from src.analysis.evaluation_functions import ps_permutation_test_score
-from sklearn.exceptions import ConvergenceWarning
+from .data_management.subsets import load_data
+from .data_management.resampling import sampling
+from .data_management.parsing_set import ParseKwargs
+from .data_management.logging_data import log_study_results, log_single_results
+from .data_management.setup_data import read_config
+from evaluation_functions import ps_permutation_test_score
 
 # Filter and ignore the ConvergenceWarning
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
