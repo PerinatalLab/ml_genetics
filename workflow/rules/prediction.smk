@@ -30,7 +30,7 @@ rule models_done:
 rule gens_done:
     input:
         expand(
-            config["checks"] + "chunks/{{iTarget}}/{{iSubset}}/{{iModel}}/{iGen}_done.txt",
+        config["checks"] + "chunks/{{iTarget}}/{{iSubset}}/{{iModel}}/{iGen}_done.txt",
             iGEN=GENOME,
         ),
     output:
