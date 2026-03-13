@@ -38,6 +38,7 @@ rule subset_done:
 rule param_pred:
     input:
         script=config["scripts_analysis"] + "tune_prediction.py",
+        check=config["checks"] + "datamgt.txt",
     output:
         best_params=config["out_params"]
         + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
