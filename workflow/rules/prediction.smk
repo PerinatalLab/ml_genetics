@@ -82,7 +82,6 @@ rule param_pred:
                 > {log} {logAll}"
 
 
-"""
 ## folds_done: Helper rule to expand parameters
 rule folds_done_s:
     input:
@@ -96,13 +95,16 @@ rule folds_done_s:
     shell:
         "touch {output[0]}"
 
+
 ### param_pred: get best parameters and predictions for each fold, subset, model and genome
 rule evaluate_model:
     input:
         script=config["scripts_analysis"] + "evaluate_model.py",
-        params=config["out_params"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.json",
+        params=config["out_params"]
+        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.json",
     output:
-        score_dir=config["out_pred"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.csv",
+        score_dir=config["out_pred"]
+        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.csv",
     log:
         config["log"]
         + "prediction/evaluation/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
@@ -134,4 +136,3 @@ rule tune_parameters:
             --out {output.best_params} \
             --wild {wildcards} \
                 > {log} {logAll}"
-"""
