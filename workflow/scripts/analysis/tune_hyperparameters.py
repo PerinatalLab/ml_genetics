@@ -9,7 +9,7 @@ import pandas as pd
 import optuna
 
 from optuna.trial import TrialState
-from optuna.samplers import TPESampler, MOTPESampler
+from optuna.samplers import TPESampler
 import pyarrow.feather as feather
 from sklearn.utils.class_weight import compute_class_weight
 from sklearn.model_selection import permutation_test_score, cross_val_score
