@@ -732,7 +732,7 @@ if __name__ == "__main__":
 
     with open(out_file, "w") as f:
         json.dump(json_par, f, indent=4)
-    scorer = make_scorer(roc_auc_score, needs_proba=True) if TARGET == "PTD" else "r2"
+    scorer = make_scorer(roc_auc_score, response_method="predict_proba") if TARGET == "PTD" else "r2"
     data = get_data(STUDYNAME)
 
     scores = []
