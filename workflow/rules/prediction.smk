@@ -60,18 +60,6 @@ rule folds_done:
     shell:
         "touch {output[0]}"
 
-## folds_done: Helper rule to expand parameters
-rule folds_done_s:
-    input:
-        expand(
-            config["out_pred"]
-            + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}_s.csv",
-            iFold=FOLDS,
-        ),
-    output:
-        config["checks"] + "chunks/eval/{iTarget}/{iSubset}/{iModel}/{iGen}_done_s.txt",
-    shell:
-        "touch {output[0]}"
 
 
 ### param_pred: get best parameters and predictions for each fold, subset, model and genome
@@ -94,6 +82,19 @@ rule param_pred:
             --wild {wildcards} \
                 > {log} {logAll}"
 
+"""
+## folds_done: Helper rule to expand parameters
+rule folds_done_s:
+    input:
+        expand(
+            config["out_pred"]
+            + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}_s.csv",
+            iFold=FOLDS,
+        ),
+    output:
+        config["checks"] + "chunks/eval/{iTarget}/{iSubset}/{iModel}/{iGen}_done_s.txt",
+    shell:
+        "touch {output[0]}"
 
 ### param_pred: get best parameters and predictions for each fold, subset, model and genome
 rule evaluate_model:
@@ -133,3 +134,4 @@ rule tune_parameters:
             --out {output.best_params} \
             --wild {wildcards} \
                 > {log} {logAll}"
+"""
