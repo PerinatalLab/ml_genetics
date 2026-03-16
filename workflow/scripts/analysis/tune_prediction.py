@@ -41,7 +41,7 @@ from sklearn.metrics import (
 
 import sys
 #sys.path.append('/mnt/work/workbench/hedvigs/snake_book/econ')
-from workflow.scripts.data_management.subsets import load_data
+from data_management.subsets import load_data
 #from .data_management.subsets import load_data
 from src.data_management.resampling import sampling
 from src.data_management.parsing_set import ParseKwargs
