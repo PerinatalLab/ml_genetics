@@ -1,7 +1,7 @@
 data_path: "/mnt/work/workbench/hedvigs/hedvproj/hed_ML/results/geno/plink"
 
 # Pathways
-root_path      : "/mnt/work/hedvigs/grepos/plab_workflow/"
+root_path      : "/mnt/work/hedvig/grepos/plab_workflow/"
 
 ROOT: "."
 sub2root: "../../"
