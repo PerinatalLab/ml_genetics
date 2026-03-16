@@ -1,4 +1,6 @@
 import argparse
+import pyarrow as pa
+import pandas as pd
 import pyarrow.feather as feather
 
 import read_files as gt
@@ -32,6 +34,9 @@ if __name__ == "__main__":
     if args.full:
         y_dat = feather.read_feather(args.full)
         x_data = gt.divide_gen(x_data, y_dat, gen)
+    
+    x_data = pa.Table.from_pandas(x_data, preserve_index=True)
+    
 
     feather.write_feather(x_data, out_file)
 # print(np.argwhere(np.isnan(x_data)))
