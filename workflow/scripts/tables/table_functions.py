@@ -44,6 +44,19 @@ def agg_table(
     cmaps=None,
     **kwargs,
 ):
+    """
+    Aggregate a DataFrame by specified categories and apply functions to value columns, with conditional formatting.
+    Parameters:
+    df (pd.DataFrame): DataFrame to aggregate
+    categories (list): List of columns to group by
+    valname (list): List of columns to apply functions to
+    functions (list or dict): Functions to apply to valname columns
+    color_funcs (list): List of functions to use for coloring
+    cmaps (dict): Dictionary mapping column names to colormaps
+    **kwargs: Additional arguments for styling
+    Returns:
+    pd.DataFrame: Styled DataFrame with aggregated results
+    """
 
     # group and aggregate for functions
     if isinstance(functions, dict):
@@ -119,8 +132,16 @@ def rename_models(df, colname="Model"):
 
 
 def save_tex(df, filename, site="home"):
-    # save as latex table
-
+    """
+    Save a DataFrame as a LaTeX table with custom formatting and optional longtable environment based on the number of rows.
+     Parameters:
+    df (pd.DataFrame): DataFrame to save
+    filename (str): Name of the file to save
+    site (str): Site for file path
+    Returns:
+    None
+    """
+    
     if site != "home":
         file_path = f"/home/hedvigs/PycharmProjects/homewrs/snake_book/econ/out/tables/{filename}.tex"
     else:
@@ -333,6 +354,17 @@ def calculate_relative_risk(plr, nlr):
 
 
 def calc_mcc(tn, fp, fn, tp):
+    """
+    Calculate the Matthews Correlation Coefficient (MCC) based on the confusion matrix values.
+     Parameters:
+    tn (float): True Negatives
+    fp (float): False Positives
+    fn (float): False Negatives
+    tp (float): True Positives
+
+    Returns:
+    float: Matthews Correlation Coefficient (MCC)
+    """
     numerator = (tp * tn) - (fp * fn)
     denominator = np.sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn))
     with np.errstate(divide="ignore", invalid="ignore"):
@@ -341,6 +373,15 @@ def calc_mcc(tn, fp, fn, tp):
 
 
 def calc_f1_score(fp, fn, tp):
+    """Calculate the F1 score based on the confusion matrix values.
+     Parameters:
+    fp (float): False Positives
+    fn (float): False Negatives
+    tp (float): True Positives
+
+    Returns:
+    float: F1 Score
+    """
     precision = calc_precision(fp, tp)  # tp/(tp+fp) if (tp+fp) != 0 else 0
     recall = calc_sensitivity(fn, tp)  # tp/ (tp+fn) if (tp+fn) != 0 else 0
     return (
@@ -351,24 +392,61 @@ def calc_f1_score(fp, fn, tp):
 
 
 def calc_balanced_acc(tn, fp, fn, tp):
+    """Calculate the Balanced Accuracy based on the confusion matrix values.
+     Parameters:
+    tn (float): True Negatives
+    fp (float): False Positives
+    fn (float): False Negatives
+    tp (float): True Positives
+
+    Returns:
+    float: Balanced Accuracy
+    """
     sensitivity = calc_sensitivity(fn, tp)
     specificity = calc_specificity(tn, fp)
     return (sensitivity + specificity) / 2
 
 
 def calc_or(tn, fp, fn, tp):
+    """Calculate the Odds Ratio (OR) based on the confusion matrix values.
+     Parameters:
+    tn (float): True Negatives
+    fp (float): False Positives
+    fn (float): False Negatives
+    tp (float): True Positives
+
+    Returns:
+    float: Odds Ratio (OR)
+    
+    Notes:
+        if fn == 0 or fp == 0:
+        return float('inf') if tp>0 and tn>0 else 0
+        return (tp * tn) / (fp * fn)
+    """
     # Gives 0 if or is 0 or inf
     with np.errstate(divide="ignore", invalid="ignore"):
         oddsr = np.where(fn * fp != 0, (tp * tn) / (fp * fn), 0)
     return oddsr
-    # if fn == 0 or fp == 0:
-    #     return float('inf') if tp>0 and tn>0 else 0
-    # return (tp * tn) / (fp * fn)
 
 
 def calc_rr(tn, fp, fn, tp):
+    """Calculate the Relative Risk (RR) based on the confusion matrix values.
+     Parameters:
+    tn (float): True Negatives
+    fp (float): False Positives
+    fn (float): False Negatives
+    tp (float): True Positives
+
+    Returns:
+    float: Relative Risk (RR)
+    
+    Notes:
+    # risk_in_exposed = tp / (tp + fn) if (tp + fn) != 0 else 0
+    # risk_in_unexposed = fp / (fp + tn) if (fp + tn) != 0 else 0
+    # return risk_in_exposed / risk_in_unexposed if risk_in_unexposed != 0 else float('inf')
+    """
     risk_in_exposed = calc_sensitivity(fn, tp)
-    risk_in_unexposed = calc_fpr(tn, fp)  # fp / (fp + tn) if (fp + tn) != 0 else 0
+    risk_in_unexposed = calc_fpr(tn, fp)  
     with np.errstate(divide="ignore", invalid="ignore"):  # handle div by zero
         rr = np.where(
             risk_in_unexposed != 0, risk_in_exposed / risk_in_unexposed, float("inf")
@@ -377,6 +455,19 @@ def calc_rr(tn, fp, fn, tp):
 
 
 def calc_lr(tn, fp, fn, tp):
+    """Calculate the Positive Likelihood Ratio (PLR) and Negative Likelihood Ratio (NLR) based on the confusion matrix values.
+     Parameters:
+    tn (float): True Negatives
+    fp (float): False Positives
+    fn (float): False Negatives
+    tp (float): True Positives
+
+    Returns:
+    tuple: Positive Likelihood Ratio (PLR) and Negative Likelihood Ratio (NLR)
+     Notes:
+     plr = sensitivity / (1 - specificity) if (1 - specificity) != 0 else float("inf")
+     nlr = (1 - sensitivity) / specificity if specificity != 0 else float("inf")
+    """
     sensitivity = calc_sensitivity(fn, tp)
     specificity = calc_specificity(tn, fp)
     plr = sensitivity / (1 - specificity) if (1 - specificity) != 0 else float("inf")
@@ -385,10 +476,26 @@ def calc_lr(tn, fp, fn, tp):
 
 
 def calc_precision(fp, tp):
+    """Calculate the Precision based on the confusion matrix values.
+     Parameters:
+    fp (float): False Positives
+    tp (float): True Positives
+
+    Returns:
+    float: Precision
+    """
     return tp / (tp + fp) if (tp + fp) != 0 else 0
 
 
 def calc_fpr(tn, fp):
+    """Calculate the False Positive Rate (FPR) based on the confusion matrix values.
+     Parameters:
+    tn (float): True Negatives
+    fp (float): False Positives
+
+    Returns:
+    float: False Positive Rate (FPR)
+    """
     with np.errstate(
         divide="ignore", invalid="ignore"
     ):  # To handle division by zero gracefully
@@ -397,6 +504,14 @@ def calc_fpr(tn, fp):
 
 
 def calc_sensitivity(fn, tp):
+    """Calculate the Sensitivity (True Positive Rate) based on the confusion matrix values.
+     Parameters:
+    fn (float): False Negatives
+    tp (float): True Positives
+
+    Returns:
+    float: Sensitivity
+    """
     with np.errstate(
         divide="ignore", invalid="ignore"
     ):  # To handle division by zero gracefully
@@ -406,6 +521,14 @@ def calc_sensitivity(fn, tp):
 
 
 def calc_specificity(tn, fp):
+    """Calculate the Specificity (True Negative Rate) based on the confusion matrix values.
+     Parameters:
+    tn (float): True Negatives
+    fp (float): False Positives
+
+    Returns:
+    float: Specificity
+    """
     with np.errstate(
         divide="ignore", invalid="ignore"
     ):  # To handle division by zero gracefully
@@ -415,8 +538,11 @@ def calc_specificity(tn, fp):
 
 
 def get_all_metrics(df, **kwargs):
-    # Get OR, RR, Sensitivity, Specificity, MCC and Balanced accuracy
-
+    """Calculate and add all relevant metrics 
+    (OR, RR, Sensitivity, Specificity, MCC, Balanced Accuracy) to the DataFrame based on confusion matrix values.
+     Parameters:
+    df (pd.DataFrame): DataFrame containing confusion matrix values (tn, fp, fn, tp) as columns or provided via kwargs
+    """
     tn = kwargs.get("tn") if "tn" in kwargs else df.tn
     fp = kwargs.get("fp") if "fp" in kwargs else df.fp
     fn = kwargs.get("fn") if "fn" in kwargs else df.fn
@@ -514,6 +640,12 @@ def rename_subsets(df):
 
 
 def divide_concur(dfc):
+    """
+    Divide combined results and individual results for combined DataFrame, calculate additional metrics, and merge them back together.
+     Parameters:
+    dfc (pd.DataFrame): DataFrame containing both combined and individual results with confusion matrix values (ctn, cfn, ctp, cfp) for combined results and tn, fp, fn, tp for individual results.
+    Returns:    pd.DataFrame: DataFrame with combined and individual results, including additional metrics (OR, RR, Sensitivity, Specificity, MCC, Balanced Accuracy) for both sets of results.
+        """
     # divide com results and individual results for combined df
     c_cols = [col for col in dfc.columns if col.startswith("c")]
     dfc1 = dfc[c_cols]
