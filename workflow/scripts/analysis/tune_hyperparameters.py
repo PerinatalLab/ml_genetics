@@ -420,8 +420,9 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--data", help="Data path (passed through to load_data)")
     parser.add_argument("-p", "--pheno", help="Phenotype file")
     parser.add_argument("-w", "--wild", action=ParseKwargs, help="Wildcard key=value pairs")
-    args = parser.parse_intermixed_args()
-
+    args = parser.parse_known_args()
+    args = args[0] if len(args) > 0 else args
+    
     wildcards = args.wild
     out_file = args.out
 

@@ -80,3 +80,46 @@ rule param_pred:
             --utils {output.score_dir} \
             --wild {wildcards} \
                 > {log} {logAll}"
+
+
+
+""""
+### param_pred: get best parameters and predictions for each fold, subset, model and genome
+rule evaluate_model:
+    input:
+        script=config["scripts_analysis"] + "evaluate_model.py",
+        params=config["out_params"]    
+        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
+    output:
+        score_dir=config["out_pred"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.csv",
+    log:
+        config["log"] + "prediction/evaluation/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
+    conda:
+        "../envs/analysis.yml"
+    shell:
+        "python {input.script} \
+            --data {input.params} \
+            --utils {output.score_dir} \
+            --wild {wildcards} \
+                > {log} {logAll}"
+
+
+
+### param_pred: get best parameters and predictions for each fold, subset, model and genome
+rule tune_parameters:
+    input:
+        script=config["scripts_analysis"] + "tune_hyperparameters.py",
+        check=config["checks"] + "datamgt.txt",
+    output:
+        best_params=config["out_params"]
+        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
+    log:
+        config["log"] + "prediction/parameters/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
+    conda:
+        "../envs/analysis.yml"
+    shell:
+        "python {input.script} \
+            --out {output.best_params} \
+            --wild {wildcards} \
+                > {log} {logAll}"
+"""
