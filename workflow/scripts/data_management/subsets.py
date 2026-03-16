@@ -50,7 +50,6 @@ def select_features(x_data: pd.DataFrame, y_data: pd.DataFrame, gen: str = "m", 
     1         2         5
     2         3         6
     """
-    print(x_data.head())
     x_data = mac_filter(x_data)
     x_batch, y_batch = get_batch(x_data, y_data, fold=fold, gen=gen)
     x_train, x_test = x_batch
@@ -187,6 +186,8 @@ def load_data(study_id):
     trait, subset, model_name, gen, fold = study_id.rsplit('_')
     fold=int(fold)
     x_data = feather.read_feather(path + f'results/data/x_{gen}.feather')
+    print(x_data.head())
+
     y_file = path + 'results/data/y_data.feather' 
     k = 100
     if subset == "selected":
