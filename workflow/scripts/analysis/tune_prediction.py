@@ -22,7 +22,6 @@ from sklearn.discriminant_analysis import (
     QuadraticDiscriminantAnalysis as QDA,
 )
 from sklearn.linear_model import LogisticRegression as LRC
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import BernoulliNB as BNB
 from sklearn.tree import DecisionTreeClassifier as DTC
 from sklearn.neighbors import KNeighborsClassifier as KNN
