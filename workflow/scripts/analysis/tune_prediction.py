@@ -38,7 +38,6 @@ from sklearn.metrics import (
     make_scorer,
     confusion_matrix
 )
-import snakemake  # gives access to snakemake.config
 import sys
 from pathlib import Path
 
