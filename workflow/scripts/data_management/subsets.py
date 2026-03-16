@@ -50,8 +50,8 @@ def select_features(x_data: pd.DataFrame, y_data: pd.DataFrame, gen: str = "m", 
     1         2         5
     2         3         6
     """
-    x_data = mac_filter(x_data)
     print(x_data.head())
+    x_data = mac_filter(x_data)
     x_batch, y_batch = get_batch(x_data, y_data, fold=fold, gen=gen)
     x_train, x_test = x_batch
     # Check Variance for features
