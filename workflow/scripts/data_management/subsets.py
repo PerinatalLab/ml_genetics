@@ -183,6 +183,7 @@ def fold_val(x_train, y_train):
 
 def load_data(study_id):
     path = read_config('root_path')
+    print(path)
     trait, subset, model_name, gen, fold = study_id.rsplit('_')
     fold=int(fold)
     x_data = feather.read_feather(path + f'results/data/x_{gen}.feather')
