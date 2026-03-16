@@ -432,7 +432,7 @@ if __name__ == "__main__":
     MODEL_NAME = wildcards["iModel"]
     FOLD = int(wildcards["iFold"])
 
-    TRIALS = 500
+    TRIALS = 100
     n_train_iter = 30 if MODEL_NAME == "nn" else 20
     PTHRESH = 0.01 if MODEL_NAME == "nn" else 0.02
 
