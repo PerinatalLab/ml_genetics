@@ -17,8 +17,8 @@ parser.add_argument("-d", "--data")
 parser.add_argument("-o", "--out", nargs="*")
 parser.add_argument("-p", "--pheno")
 
-args = parser.parse_known_args()
-args = args[0]
+args = parser.parse_known_args() 
+args = args[0] if len(args) > 0 else args
 
 out_x = args.out[1]
 out_y = args.out[0]
