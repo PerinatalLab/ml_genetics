@@ -9,7 +9,6 @@ dependencies:
   - pandas
   - scikit-learn
   - yaml
-  - argparse
   - time
   - optuna
   - pyarrow
