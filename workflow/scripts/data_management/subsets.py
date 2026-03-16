@@ -186,7 +186,6 @@ def load_data(study_id):
     trait, subset, model_name, gen, fold = study_id.rsplit('_')
     fold=int(fold)
     x_data = feather.read_feather(path + f'results/data/x_{gen}.feather')
-    print(x_data.head())
     y_file = path + 'results/data/y_data.feather' 
     k = 100
     if subset == "selected":
