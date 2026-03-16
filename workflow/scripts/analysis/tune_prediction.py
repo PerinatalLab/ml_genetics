@@ -38,16 +38,18 @@ from sklearn.metrics import (
     make_scorer,
     confusion_matrix
 )
-
+import snakemake  # gives access to snakemake.config
 import sys
+
+sys.path.insert(0, snakemake.config["scripts"])
 #sys.path.append('/mnt/work/workbench/hedvigs/snake_book/econ')
 from data_management.subsets import load_data
 #from .data_management.subsets import load_data
-from src.data_management.resampling import sampling
-from src.data_management.parsing_set import ParseKwargs
-from src.data_management.logging_data import log_study_results, log_single_results
-from src.data_management.setup_data import read_config
-from src.analysis.evaluation_functions import ps_permutation_test_score
+from data_management.resampling import sampling
+from data_management.parsing_set import ParseKwargs
+from data_management.logging_data import log_study_results, log_single_results
+from data_management.setup_data import read_config
+from analysis.evaluation_functions import ps_permutation_test_score
 from sklearn.exceptions import ConvergenceWarning
 
 # Filter and ignore the ConvergenceWarning
