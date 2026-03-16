@@ -1,4 +1,3 @@
-
 import logging
 
 import numpy as np
@@ -9,7 +8,7 @@ from optuna.trial import TrialState
 
 import sys
 
-sys.path.append("/mnt/work/workbench/hedvigs/snake_book/econ")
+sys.path.append("/mnt/work/hedvigs/grepos/plab_workflow/")
 
 
 def make_logger(log_file, name, **kwargs):
@@ -21,7 +20,7 @@ def make_logger(log_file, name, **kwargs):
     :type name: _type_
     :return: _description_
     :rtype: _type_
-    """    
+    """
     header = "[%(levelname)1.1s %(asctime)s]"
     message = "%(message)s"
 
@@ -37,13 +36,14 @@ def make_logger(log_file, name, **kwargs):
 
     return logger
 
+
 def log_study_results(study):
     study_name = study.study_name
-    target, subset, model_name, gen, fold = study_name.rsplit('_')
+    target, subset, model_name, gen, fold = study_name.rsplit("_")
     direction = study.user_attrs["DIRECTION"]
     n_trials = study.user_attrs["TRIALS"]
     model_type = study.user_attrs["TYPE"]
-    log_file = f"/mnt/work/workbench/hedvigs/snake_book/econ/logs/parameters/{target}/{model_type}/{study_name}.log"
+    log_file = f"/mnt/work/grepos/plab_workflow/logs/parameters/{target}/{model_type}/{study_name}.log"
 
     logger = make_logger(log_file, name="optuna_study")
 
@@ -51,7 +51,9 @@ def log_study_results(study):
 
     pruned_trials = study.get_trials(deepcopy=False, states=[TrialState.PRUNED])
     complete_trials = study.get_trials(deepcopy=False, states=[TrialState.COMPLETE])
-    pruned_trials_usr = [trial for trial in study.trials if trial.user_attrs.get("pruned", False)]
+    pruned_trials_usr = [
+        trial for trial in study.trials if trial.user_attrs.get("pruned", False)
+    ]
 
     logger.info(f"Study statistics: ")
     for key, value in study.user_attrs.items():
@@ -87,13 +89,13 @@ def log_study_results(study):
     logger.info(f"  User Params: ")
     for key, value in trial.user_attrs.items():
         logger.info(
-            f"    {key}: {round(value, 5) if isinstance(value, float) else value}"
+            f"    {key}: {round(value,5) if isinstance(value, float) else value}"
         )
 
     logger.info(f"  Params: ")
     for key, value in trial.params.items():
         logger.info(
-            f"    {key}: {round(value, 5) if isinstance(value, float) else value}"
+            f"    {key}: {round(value,5) if isinstance(value, float) else value}"
         )
 
     first_values = [trial.values[0] for trial in study.trials]
@@ -104,7 +106,7 @@ def log_study_results(study):
         )
         for key, value in par_imp.items():
             logger.info(
-                f"    {key}: {round(value, 5) if isinstance(value, float) else value}"
+                f"    {key}: {round(value,5) if isinstance(value, float) else value}"
             )
     else:
         logger.info(f"All suck")
@@ -113,7 +115,7 @@ def log_study_results(study):
     pd.set_option("display.max_columns", None)
     df = study.trials_dataframe()
     assert isinstance(df, pd.DataFrame)
-    assert df.shape[0] == n_trials  
+    assert df.shape[0] == n_trials
 
     df = df.drop(columns=["datetime_start", "datetime_complete", "state"])
     df.columns = df.columns.str.replace(r"params_", "")
@@ -131,14 +133,15 @@ def log_study_results(study):
     print("done")
     logger.removeHandler(logger.handlers[0])
     return df_best
-   
+
+
 def log_single_results(study):
     study_name = study.study_name
-    target, subset, model_name, gen, fold = study_name.rsplit('_')
+    target, subset, model_name, gen, fold = study_name.rsplit("_")
     direction = study.user_attrs["DIRECTION"]
     n_trials = study.user_attrs["TRIALS"]
     model_type = study.user_attrs["TYPE"]
-    log_file = f"/mnt/work/workbench/hedvigs/snake_book/econ/logs/parameters/{target}/{model_type}/{study_name}.log"
+    log_file = f"/mnt/work/hedvigs/grepos/plab_workflow/logs/parameters/{target}/{model_type}/{study_name}.log"
 
     logger = make_logger(log_file, name="optuna_study")
 
@@ -146,15 +149,19 @@ def log_single_results(study):
 
     # pruned_trials = study.get_trials(deepcopy=False, states=[TrialState.PRUNED])
     complete_trials = study.get_trials(deepcopy=False, states=[TrialState.COMPLETE])
-    pruned_trials = [trial for trial in study.trials if trial.user_attrs.get("pruned", False)]
-    
+    pruned_trials = [
+        trial for trial in study.trials if trial.user_attrs.get("pruned", False)
+    ]
+
     logger.info(f"Study statistics: ")
     for key, value in study.user_attrs.items():
         logger.info(f"  {key}: {value}")
     logger.info(f"  Number of finished trials: {len(study.trials)}")
     # logger.info(f"  Number of pruned trials: {len(pruned_trials)}")
     logger.info(f"  Number of pruned trials: {len(pruned_trials)}")
-    logger.info(f"  Number of complete trials: {len(complete_trials)-len(pruned_trials)}")
+    logger.info(
+        f"  Number of complete trials: {len(complete_trials)- len(pruned_trials)}"
+    )
     logger.info(f"  Number of trials on the Pareto front: {len(study.best_trials)}")
 
     logger.info("Best trials:")
@@ -182,16 +189,20 @@ def log_single_results(study):
     logger.info(f"  User Params: ")
     for key, value in trial.user_attrs.items():
         logger.info(
-            f"    {key}: {round(value, 5) if isinstance(value, float) else value}"
+            f"    {key}: {round(value,5) if isinstance(value, float) else value}"
         )
 
     logger.info(f"  Params: ")
     for key, value in trial.params.items():
         logger.info(
-            f"    {key}: {round(value, 5) if isinstance(value, float) else value}"
+            f"    {key}: {round(value,5) if isinstance(value, float) else value}"
         )
 
-    first_values = [trial.values[0] for trial in study.trials if trial is not None and trial.values is not None]
+    first_values = [
+        trial.values[0]
+        for trial in study.trials
+        if trial is not None and trial.values is not None
+    ]
     if target != "PTD":
         logger.info(f"  Param importance: ")
         par_imp = optuna.importance.get_param_importances(
@@ -199,7 +210,7 @@ def log_single_results(study):
         )
         for key, value in par_imp.items():
             logger.info(
-                f"    {key}: {round(value, 5) if isinstance(value, float) else value}"
+                f"    {key}: {round(value,5) if isinstance(value, float) else value}"
             )
     else:
         logger.info(f" Trial variance: {np.var(first_values)} ")
@@ -211,17 +222,17 @@ def log_single_results(study):
             )
             for key, value in par_imp.items():
                 logger.info(
-                    f"    {key}: {round(value, 5) if isinstance(value, float) else value}"
+                    f"    {key}: {round(value,5) if isinstance(value, float) else value}"
                 )
         elif np.max(first_values) < 0.51:
             logger.info(f"All suck")
             return pd.DataFrame()
         else:
-            logger.info( f"Equally bad")
+            logger.info(f"Equally bad")
     pd.set_option("display.max_columns", None)
     df = study.trials_dataframe()
     assert isinstance(df, pd.DataFrame)
-    assert df.shape[0] == n_trials  
+    assert df.shape[0] == n_trials
 
     df = df.drop(columns=["datetime_start", "datetime_complete", "state"])
     df.columns = df.columns.str.replace(r"params_", "")
@@ -235,11 +246,12 @@ def log_single_results(study):
 
     best_numbers = (trial.number for trial in study.best_trials)
     df_best = df.loc[best_numbers]
-    
+
     print("done")
     logger.removeHandler(logger.handlers[0])
     return df_best
- 
+
+
 """
 def log_study_results(study):
     STUDYNAME = study.study_name

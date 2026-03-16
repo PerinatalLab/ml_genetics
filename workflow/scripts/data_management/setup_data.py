@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
-#import yaml
+import yaml
 import pyarrow.feather as feather
 import sys
 sys.path.append('/mnt/work/hedvig/grepos/plab_workflow/workflow/scripts/')
@@ -80,9 +80,9 @@ def rename_snps(snp_list, n="tops"):
     return renamed_snps
 
 
-def read_config(access_name, path='/mnt/work/workbench/hedvigs/snake_book/econ'):
+def read_config(access_name, path='/mnt/work/hedvigs/grepos/plab_workflow/config'):
     
-#    with open('/mnt/work/workbench/hedvigs/snake_book/econ/config.yaml', 'r') as yamlfile:
+    #    with open('/mnt/work/workbench/hedvigs/snake_book/econ/config.yaml', 'r') as yamlfile:
     with open(path + '/config.yaml', 'r') as yamlfile:
 
         data = yaml.load(yamlfile, Loader=yaml.FullLoader)

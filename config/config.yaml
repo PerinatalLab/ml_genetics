@@ -24,6 +24,7 @@ scripts_postprocess : "workflow/scripts/postprocess/"
 out_data         : "results/data/"
 out_data_gen     : "results/data/gen/"
 out_pred         : "results/prediction/"
+out_params       : "results/params/"
 out_summary      : "results/summary/"
 out_tables       : "results/tables/"
 
@@ -46,4 +47,4 @@ out_analysis   : "out/analysis/"
 out_figures    : "out/figures/"
 out_paper      : "out/paper/"
 out_slides     : "out/slides/"
-out_params     : "out/params/"
+

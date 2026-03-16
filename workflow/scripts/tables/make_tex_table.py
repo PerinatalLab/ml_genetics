@@ -28,11 +28,15 @@ elif hostname == 'wl-241113-007':
     site = 'silverFlex'
 
 sys.path.append(path)
+import sys
+from pathlib import Path
 
-from src.tables import table_functions as tf
-from src.figures import figure_functions as ff
-from src.data_management import setup_data as sd
-from src.data_management.parsing_set import ParseKwargs
+sys.path.insert(0, str(Path(__file__).parents[1]))
+
+import table_functions as tf
+from figures import figure_functions as ff
+from data_management import setup_data as sd
+from data_management.parsing_set import ParseKwargs
 
 
 

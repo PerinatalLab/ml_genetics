@@ -1,10 +1,17 @@
-from imblearn.over_sampling import RandomOverSampler
-from imblearn.under_sampling import RandomUnderSampler
 import pandas as pd
 import numpy as np
 
+from imblearn.over_sampling import RandomOverSampler
+from imblearn.under_sampling import RandomUnderSampler
 
-def sampling(x_data: np.ndarray, y_data: pd.DataFrame, method: str = "under", rs: int = 42, rp: bool = False) -> tuple[np.ndarray, np.ndarray]:
+
+def sampling(
+    x_data: np.ndarray,
+    y_data: pd.DataFrame,
+    method: str = "under",
+    rs: int = 42,
+    rp: bool = False,
+) -> tuple[np.ndarray, np.ndarray]:
     """
     Sampling function to perform oversampling or undersampling on the data.
 

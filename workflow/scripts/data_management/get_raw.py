@@ -1,13 +1,10 @@
 import time
 import argparse
-#import sys
 import pandas as pd
 import numpy as np
 import pyarrow as pa
 import pyarrow.feather as feather
 
-#sys.path.append("/mnt/work/hedvigs/grepos/plab_workflow")
-#print(sys.path)
 
 from read_files import get_x_data, get_y_data, fold_data
 

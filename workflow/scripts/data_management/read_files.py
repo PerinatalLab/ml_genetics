@@ -40,7 +40,7 @@ def get_x_data(x_file="/mnt/work/workbench/hedvigs/hedvproj/data/out_top_M"):
     x_data = pd.DataFrame(
         {
             "Full_sentrix": fam["iid"],
-            **{marker: x_gen[:, i] for i, marker in enumerate(markers)}
+            **{marker: x_gen[:, i] for i, marker in enumerate(markers)},
         }
     )
     x_data.set_index("Full_sentrix", inplace=True)
@@ -78,7 +78,10 @@ def get_y_data(y_file_m, y_file_mt, y_file_f, y_file_ft):
     - The function assumes that the `match_pheno`, `match_preg`, and `norm_ga` functions are defined and implemented elsewhere.
     - The function assumes that the input files exist and are in the correct format.
     """
-    return norm_ga(match_preg(match_pheno(y_file_mt, y_file_m), match_pheno(y_file_ft, y_file_f)))
+    return norm_ga(
+        match_preg(match_pheno(y_file_mt, y_file_m), match_pheno(y_file_ft, y_file_f))
+    )
+
 
 def match_pheno(y_file_ptd, y_file_ga):
     """
@@ -132,17 +135,18 @@ def match_pheno(y_file_ptd, y_file_ga):
     ga_data.columns = ["Full_sentrix", "GA", "Preg_id"]
 
     y_data = ptd_data.set_index("Preg_id").merge(
-        ga_data.set_index("Preg_id"), on="Preg_id", how="left", suffixes=(None, "_ptd"))
+        ga_data.set_index("Preg_id"), on="Preg_id", how="left", suffixes=(None, "_ptd")
+    )
 
     if np.all(y_data["Full_sentrix"] == y_data["Full_sentrix_ptd"]):
         y_data.drop("Full_sentrix_ptd", axis=1, inplace=True)
-    
+
     return y_data
 
 
 def match_preg(y_data_m: pd.DataFrame, y_data_f: pd.DataFrame):
-  # TODO: check whether y_data is mod 5 before removing a control sample 
-    """ Match maternal and fetal data based on pregnancy id, remove unmatched samples, and clean the data.
+    # TODO: check whether y_data is mod 5 before removing a control sample
+    """Match maternal and fetal data based on pregnancy id, remove unmatched samples, and clean the data.
 
     Parameters:
     -----------
@@ -269,7 +273,9 @@ def fold_data(y_data, k=5):
     return y_data
 
 
-def divide_gen(x_data, y_data, gen="m", col_name="Full_sentrix", col_name_f="Full_sentrix_f"):
+def divide_gen(
+    x_data, y_data, gen="m", col_name="Full_sentrix", col_name_f="Full_sentrix_f"
+):
     """
     Divide the x data based on the specified genotype file.
 
@@ -308,7 +314,7 @@ def divide_gen(x_data, y_data, gen="m", col_name="Full_sentrix", col_name_f="Ful
     else:
         sen = (isec for isec in y_data["Full_sentrix"])
     print(x_data.head())
-    
+
     x_data_gen = x_data.loc[sen]
     x_data_gen.dropna(axis=1, inplace=True)
 
@@ -335,25 +341,31 @@ def combine_gen(x_data: pd.DataFrame, y_data: pd.DataFrame) -> pd.DataFrame:
     1             2               5  11  8
     2             3               6  12  9
     """
-    comb = y_data.merge(
-        x_data,
-        left_on="Full_sentrix",
-        right_on="Full_sentrix",
-        how="left",
-    ).merge(
-        x_data,
-        left_on="Full_sentrix_f",
-        right_on="Full_sentrix",
-        how="left",
-        suffixes=("_m", "_f"),
-    ).drop(
-        columns=["Full_sentrix", "Full_sentrix_f", "Test_batch", "NGA", "PTD", "GA"]
+    comb = (
+        y_data.merge(
+            x_data,
+            left_on="Full_sentrix",
+            right_on="Full_sentrix",
+            how="left",
+        )
+        .merge(
+            x_data,
+            left_on="Full_sentrix_f",
+            right_on="Full_sentrix",
+            how="left",
+            suffixes=("_m", "_f"),
+        )
+        .drop(
+            columns=["Full_sentrix", "Full_sentrix_f", "Test_batch", "NGA", "PTD", "GA"]
+        )
     )
 
     return comb.set_index(y_data.index)
 
 
-def get_pgs(y_data, pgs_file='/mnt/work/workbench/hedvigs/snake_book/econ/src/data/pgs_pol.csv'):
+def get_pgs(
+    y_data, pgs_file="/mnt/work/workbench/hedvigs/snake_book/econ/src/data/pgs_pol.csv"
+):
     """
     Load PGS data from a CSV file and add it to the input y_data DataFrame.
 
@@ -383,8 +395,8 @@ def get_pgs(y_data, pgs_file='/mnt/work/workbench/hedvigs/snake_book/econ/src/da
     """
 
     pgs = pd.read_csv(pgs_file)
-    y_data = y_data.merge(pgs, how='left', left_on='Full_sentrix', right_on='IID')
-    y_data = y_data.drop(columns=['IID'])
+    y_data = y_data.merge(pgs, how="left", left_on="Full_sentrix", right_on="IID")
+    y_data = y_data.drop(columns=["IID"])
     y_data.columns = y_data.columns.str.replace(r"moms_GAraw_", "")
 
     return y_data

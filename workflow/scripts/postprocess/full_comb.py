@@ -5,16 +5,16 @@ import json
 import argparse
 
 from sklearn.metrics import roc_auc_score, confusion_matrix
-sys.path.append('/mnt/work/workbench/hedvigs/snake_book/econ')
-from src.data_management.setup_data import read_config
+#sys.path.append('/mnt/work/workbench/hedvigs/snake_book/econ')
+from data_management.setup_data import read_config
 from itertools import combinations
-
+from data_management.parsing_set import ParseKwargs
 
 def calculate_scores(pred_df, y_target, models, num_to_drop, subset, gen, fold, in_scores):
     used_combinations = set()  # To keep track of unique combinations
     # Determine the number of models to drop
-#    num_to_drop = int(model.removeprefix(('n')))
-#    num_to_keep = len(models)-num_to_drop
+    #    num_to_drop = int(model.removeprefix(('n')))
+    #    num_to_keep = len(models)-num_to_drop
     if num_to_drop >= len(models):
         print('Need to keep at least one')
         return
@@ -75,8 +75,8 @@ if __name__ == '__main__':
     parser.add_argument("-p", "--pheno")
     parser.add_argument("-u", "--utils")
     parser.add_argument('-w', '--wild', action=ParseKwargs)
-    args=parser.parse_intermixed_args()
-
+    args=parser.parse_known_args()
+    args = args[0] if len(args)>0 else args
 
     wildcards   = args.wild
     out_file    = args.out
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     MODEL_NAME  = wildcards['iModel']
     FOLD        = int(wildcards['iFold'])
 
-# alternative input method for testing
+    # alternative input method for testing
     model = sys.argv[1]
     
     path = read_config('root_path')
@@ -105,7 +105,7 @@ if __name__ == '__main__':
     # read files
     
     pred_dir = path + 'out/analysis/predictions/'    
-###
+    ###
 
     id_name = {'m': 'Full_sentrix', 'combine': 'Preg_id', 'f':'Full_sentrix'}
     
@@ -192,7 +192,7 @@ if __name__ == '__main__':
                                        
     
     
-  #  save_file = path + f'out/tables/comb_score_{model}.csv'
+    #  save_file = path + f'out/tables/comb_score_{model}.csv'
     
     score_df = pd.DataFrame.from_records(scores)
     score_df.to_csv(out_file, sep='\t', float_format='%.5f', index=False)

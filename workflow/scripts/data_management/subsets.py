@@ -6,12 +6,14 @@ from sklearn.feature_selection import SelectKBest, f_classif, f_regression, Vari
 from sklearn.decomposition import PCA
 import pyarrow.feather as feather
 
-
 import sys
-sys.path.append('/mnt/work/workbench/hedvigs/snake_book/econ')
-from src.data_management.resampling import sampling
-from src.data_management.batches import get_batch
-from src.data_management.setup_data import read_config, rename_snps
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parents[1]))
+
+from data_management.resampling import sampling
+from data_management.batches import get_batch
+from data_management.setup_data import read_config, rename_snps
 
 
 def select_features(x_data: pd.DataFrame, y_data: pd.DataFrame, gen: str = "m", components: int = 100, fold: int = 0, trait: str = "PTD") -> pd.DataFrame:
@@ -133,11 +135,9 @@ def mac_filter(x_gen, mac_min=1):
 def load_and_preprocess_data(study_id):
     path = read_config('root_path')
     trait, subset, model_name, gen, fold = study_id.rsplit('_')
-    # if trait=='NGA':
-    #     trait='N_GA'
     fold=int(fold)
-    x_data = feather.read_feather(path + f'out/data/x_{gen}.feather')
-    y_file = path + 'out/data/y_data.feather' 
+    x_data = feather.read_feather(path + f'results/data/x_{gen}.feather')
+    y_file = path + 'results/data/y_data.feather' 
     k = 100
     if subset == "selected":
         x_data = select_features(x_data, y_file, gen, k, fold, trait)
@@ -173,19 +173,20 @@ def preprocess_data(data, trait):
     return [[x_train, y_train], [x_val, y_val], [x_test, y_test]]
 
 def fold_val(x_train, y_train):
+    """Assigns fold numbers to the training data for cross-validation."""
     skf = StratifiedKFold(n_splits=k, shuffle=True, random_state=42)
     for k, (_, tes) in enumerate(skf.split(y_train, y_train["PTD"])):
-        val_ind = y_data.index[tes].values
-        y_data.loc[test_ind, "Test_batch"] = k
+        val_ind = y_train.index[tes].values
+        y_train.loc[val_ind, "Test_batch"] = k
 
-    return y_data
+    return y_train
 
 def load_data(study_id):
     path = read_config('root_path')
     trait, subset, model_name, gen, fold = study_id.rsplit('_')
     fold=int(fold)
-    x_data = feather.read_feather(path + f'out/data/x_{gen}.feather')
-    y_file = path + 'out/data/y_data.feather' 
+    x_data = feather.read_feather(path + f'results/data/x_{gen}.feather')
+    y_file = path + 'results/data/y_data.feather' 
     k = 100
     if subset == "selected":
         x_data = select_features(x_data, y_file, gen, k, fold, trait)

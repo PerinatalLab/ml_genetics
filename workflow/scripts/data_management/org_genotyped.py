@@ -1,13 +1,7 @@
 import argparse
-#import sys
 import pyarrow.feather as feather
 
-# sys.path.append("/mnt/work/hedvigs/grepos/plab_workflow/workflow/scripts/")
-
-# from data_management import setup_data as gt
 import read_files as gt
-
-# from data_management.parsing_set import ParseKwargs
 from parsing_set import ParseKwargs
 
 if __name__ == "__main__":
@@ -20,8 +14,7 @@ if __name__ == "__main__":
     parser.add_argument("-f", "--full")
     parser.add_argument("-w", "--wild", action=ParseKwargs)
 
-    args = parser.parse_known_args()  ##CHANGED
-    print(args)
+    args = parser.parse_known_args(),  ##CHANGED
     args = args[0]
 
     wildcards = args.wild
