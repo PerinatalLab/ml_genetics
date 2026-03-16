@@ -1,10 +1,13 @@
 import pandas as pd
-import sys
 import numpy as np
 from sklearn.metrics import roc_auc_score, confusion_matrix
-sys.path.append('/mnt/work/workbench/hedvigs/snake_book/econ')
-from src.data_management.setup_data import read_config
-from src.data_management.parsing_set import ParseKwargs
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parents[1]))
+
+from data_management.setup_data import read_config
+from data_management.parsing_set import ParseKwargs
 
 
 
@@ -46,8 +49,8 @@ if __name__=='__main__':
     parser.add_argument("-p", "--pheno")
     parser.add_argument("-u", "--utils")
     parser.add_argument('-w', '--wild', action=ParseKwargs)
-    args=parser.parse_intermixed_args()
-
+    args=parser.parse_known_args()
+    args = args[0] if len(args)>0 else args
 
     wildcards   = args.wild
     out_file    = args.out

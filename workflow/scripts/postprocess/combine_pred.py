@@ -1,13 +1,39 @@
 import pandas as pd
-import sys
 import numpy as np
+import argparse
 from sklearn.metrics import roc_auc_score, confusion_matrix
-sys.path.append('/mnt/work/workbench/hedvigs/snake_book/econ')
-from src.data_management.setup_data import read_config
+import sys
+from pathlib import Path
 
-subset = sys.argv[1]
-#gen = sys.argv[2]
-#model = sys.argv[3]
+sys.path.insert(0, str(Path(__file__).parents[1]))
+
+#sys.path.append('/mnt/work/workbench/hedvigs/snake_book/econ')
+from data_management.setup_data import read_config
+from data_management.parsing_set import ParseKwargs
+
+
+######################################################
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("-o", "--out")
+    parser.add_argument("-d", "--data")
+    parser.add_argument("-p", "--pheno")
+    parser.add_argument("-u", "--utils")
+    parser.add_argument("-w", "--wild", action=ParseKwargs)
+    args = parser.parse_known_args()
+    args = args[0] if len(args) > 0 else args
+
+    wildcards = args.wild
+    out_file = args.out
+    score_file = args.utils
+
+
+    subset = wildcards["iSubset"]
+    gen = wildcards["iGen"]
+    model = wildcards["iModel"]
+    fold = int(wildcards["iFold"])
 
 path = read_config('root_path')
 models = read_config('all_models')
@@ -73,5 +99,3 @@ for gen in gens:
 
 score_df = pd.DataFrame.from_records(scores)
 score_df.to_csv(save_file, sep='\t', float_format='%.5f', index=False)
-
-
