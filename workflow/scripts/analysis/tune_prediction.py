@@ -683,31 +683,6 @@ def predict_fold(params, data, scorer):
                 "mape": mean_absolute_percentage_error(y_test, y_pred),
             }
         )
-    #     if TARGET != "PTD":
-    #         score_dict["r2"]          = r2_score(y_test, y_pred)
-    #         score_dict["ex_var"]      = explained_variance_score(y_test, y_pred)
-    #         score_dict["mae"]         = mean_absolute_error(y_test, y_pred)
-    #         score_dict["mape"]        = mean_absolute_percentage_error(y_test, y_pred)
-    #     else:
-    #         score_dict["auc_prob"]    = roc_auc_score(y_test, y_prob, average="weighted")
-    #         score_dict["auc_pred"]    = roc_auc_score(y_test, y_pred, average="weighted")
-    #         score_dict["fbeta"]       = fbeta_score(y_test, y_pred, beta=1, average="weighted")
-    #         score_dict["f1"]          = f1_score(y_test, y_pred, average="weighted")
-    #         plr, nlr                  = class_likelihood_ratios(y_test, y_pred, raise_warning=False)
-    #         score_dict["plr"]         = plr
-    #         score_dict["nlr"]         = nlr
-
-    #     score_dict["train_perm"]      = perm_score.mean()
-    #     score_dict["test_perm_mean"]      = np.mean(test_perm)
-
-    # #    score_dict["perm_score_median"] = np.median(perm_score)
-    #     score_dict["test_perm_median"] = np.median(test_perm)
-
-    #     score_dict["train_pval"]      = pvalue_score
-    #     score_dict["test_pval"]      = test_pval
-
-    #     score_dict["train_score"]     = train_score
-    #     score_dict["test_score"]     = test_score
 
     pred_name = f"pred_{STUDYNAME}_{test_num}"
     pred_df = pd.DataFrame({pred_name: y_prob, "Target": y_test})
