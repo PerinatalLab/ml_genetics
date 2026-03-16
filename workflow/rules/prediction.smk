@@ -61,7 +61,6 @@ rule folds_done:
         "touch {output[0]}"
 
 
-
 ### param_pred: get best parameters and predictions for each fold, subset, model and genome
 rule param_pred:
     input:
@@ -81,6 +80,7 @@ rule param_pred:
             --utils {output.score_dir} \
             --wild {wildcards} \
                 > {log} {logAll}"
+
 
 """
 ## folds_done: Helper rule to expand parameters

@@ -1,4 +1,9 @@
-localrules: make_prediction, models_done, gens_done, folds_done
+localrules:
+    make_prediction,
+    models_done,
+    gens_done,
+    folds_done,
+
 
 # Rules
 rule all:
@@ -8,9 +13,10 @@ rule all:
         "results/checks/summary_done.txt",
         "results/checks/tables_done.txt",
 
-include: "rules/dag.smk",
-include: "rules/common.smk",
-include: "rules/data_mgt.smk",
-include: "rules/prediction.smk",
-include: "rules/summary.smk",
-include: "rules/tables.smk",
+
+include: "rules/dag.smk"
+include: "rules/common.smk"
+include: "rules/data_mgt.smk"
+include: "rules/prediction.smk"
+include: "rules/summary.smk"
+include: "rules/tables.smk"
