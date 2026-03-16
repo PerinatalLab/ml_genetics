@@ -73,7 +73,7 @@ def get_batch(x_data, y_data, fold=0, gen="m"):
 
     y_train = y_m.reset_index()
     y_test = y_t.reset_index()
-
+    print(x_data.head())
     x_train = x_data.loc[y_train[ind_name]]
     x_test = x_data.loc[y_test[ind_name]]
     y_train = y_train.set_index(ind_name)
