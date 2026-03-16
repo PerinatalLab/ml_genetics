@@ -41,7 +41,8 @@ from sklearn.metrics import (
 
 import sys
 #sys.path.append('/mnt/work/workbench/hedvigs/snake_book/econ')
-from .data_management.subsets import load_data
+from workflow.scripts.data_management.subsets import load_data
+#from .data_management.subsets import load_data
 from src.data_management.resampling import sampling
 from src.data_management.parsing_set import ParseKwargs
 from src.data_management.logging_data import log_study_results, log_single_results
@@ -349,7 +350,7 @@ def get_parameters():
     )
     #  Turn off optuna log notes.
     start=time()
-#    optuna.logging.set_verbosity(optuna.logging.WARN)
+    #  optuna.logging.set_verbosity(optuna.logging.WARN)
     optuna.logging.set_verbosity(optuna.logging.INFO)
     study.optimize(objective, n_trials=TRIALS, gc_after_trial=True, show_progress_bar=False, catch = [ValueError])
     print(
