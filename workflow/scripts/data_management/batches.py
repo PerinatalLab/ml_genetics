@@ -2,8 +2,12 @@
 # import pandas as pd
 # import numpy as np
 import pyarrow.feather as feather
+import sys
+from pathlib import Path
 
-from resampling import sampling
+sys.path.insert(0, str(Path(__file__).parents[1]))
+
+from data_management.resampling import sampling
 
 
 def get_batch(x_data, y_data, fold=0, gen="m"):
