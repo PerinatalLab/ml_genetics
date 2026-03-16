@@ -715,7 +715,7 @@ if __name__ == "__main__":
     FOLD = int(wildcards["iFold"])
 
     CLASSES = 1
-    TRIALS = 500
+    TRIALS = 200
     n_train_iter = 30 if MODEL_NAME == "nn" else 20
     N = 20
     PTHRESH = 0.01 if MODEL_NAME == "nn" else 0.02
