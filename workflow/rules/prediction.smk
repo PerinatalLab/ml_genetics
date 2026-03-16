@@ -91,7 +91,7 @@ rule folds_done_s:
             iFold=FOLDS,
         ),
     output:
-        config["checks"] + "chunks/eval/{iTarget}/{iSubset}/{iModel}/{iGen}_done_s.txt",
+        config["checks"] + "chunks/{iTarget}/{iSubset}/{iModel}/{iGen}_done_s.txt",
     shell:
         "touch {output[0]}"
 
@@ -107,7 +107,7 @@ rule evaluate_model:
         + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.csv",
     log:
         config["log"]
-        + "prediction/evaluation/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
+        + "prediction/evaluation/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}_s.txt",
     conda:
         "../envs/analysis.yml"
     shell:
@@ -128,7 +128,7 @@ rule tune_parameters:
         + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.json",
     log:
         config["log"]
-        + "prediction/parameters/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
+        + "prediction/parameters/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}_s.txt",
     conda:
         "../envs/analysis.yml"
     shell:
