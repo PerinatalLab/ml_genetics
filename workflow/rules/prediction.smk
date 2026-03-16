@@ -99,7 +99,7 @@ rule param_pred:
 rule evaluate_model:
     input:
         script=config["scripts_analysis"] + "evaluate_model.py",
-        params=config["out_params"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
+        params=config["out_params"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.json",
     output:
         score_dir=config["out_pred"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.csv",
     log:
@@ -122,7 +122,7 @@ rule tune_parameters:
         check=config["checks"] + "datamgt.txt",
     output:
         best_params=config["out_params"]
-        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
+        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.json",
     log:
         config["log"]
         + "prediction/parameters/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
