@@ -14,7 +14,7 @@ if __name__ == "__main__":
     parser.add_argument("-f", "--full")
     parser.add_argument("-w", "--wild", action=ParseKwargs)
 
-    args = parser.parse_known_args(),  ##CHANGED
+    args = parser.parse_known_args()  ##CHANGED
     args = args[0] if len(args) > 0 else args
 
     wildcards = args.wild
