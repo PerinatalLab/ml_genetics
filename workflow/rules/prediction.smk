@@ -60,6 +60,19 @@ rule folds_done:
     shell:
         "touch {output[0]}"
 
+## folds_done: Helper rule to expand parameters
+rule folds_done_s:
+    input:
+        expand(
+            config["out_pred"]
+            + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}_s.csv",
+            iFold=FOLDS,
+        ),
+    output:
+        config["checks"] + "chunks/eval/{iTarget}/{iSubset}/{iModel}/{iGen}_done.txt",
+    shell:
+        "touch {output[0]}"
+
 
 ### param_pred: get best parameters and predictions for each fold, subset, model and genome
 rule param_pred:
@@ -82,18 +95,16 @@ rule param_pred:
                 > {log} {logAll}"
 
 
-
-""""
 ### param_pred: get best parameters and predictions for each fold, subset, model and genome
 rule evaluate_model:
     input:
         script=config["scripts_analysis"] + "evaluate_model.py",
-        params=config["out_params"]    
-        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
+        params=config["out_params"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
     output:
-        score_dir=config["out_pred"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.csv",
+        score_dir=config["out_pred"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.csv",
     log:
-        config["log"] + "prediction/evaluation/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
+        config["log"]
+        + "prediction/evaluation/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
     conda:
         "../envs/analysis.yml"
     shell:
@@ -102,7 +113,6 @@ rule evaluate_model:
             --utils {output.score_dir} \
             --wild {wildcards} \
                 > {log} {logAll}"
-
 
 
 ### param_pred: get best parameters and predictions for each fold, subset, model and genome
@@ -114,7 +124,8 @@ rule tune_parameters:
         best_params=config["out_params"]
         + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
     log:
-        config["log"] + "prediction/parameters/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
+        config["log"]
+        + "prediction/parameters/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
     conda:
         "../envs/analysis.yml"
     shell:
@@ -122,4 +133,3 @@ rule tune_parameters:
             --out {output.best_params} \
             --wild {wildcards} \
                 > {log} {logAll}"
-"""

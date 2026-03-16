@@ -422,7 +422,7 @@ if __name__ == "__main__":
     parser.add_argument("-w", "--wild", action=ParseKwargs, help="Wildcard key=value pairs")
     args = parser.parse_known_args()
     args = args[0] if len(args) > 0 else args
-    
+
     wildcards = args.wild
     out_file = args.out
 
