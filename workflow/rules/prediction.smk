@@ -69,7 +69,7 @@ rule folds_done_s:
             iFold=FOLDS,
         ),
     output:
-        config["checks"] + "chunks/eval/{iTarget}/{iSubset}/{iModel}/{iGen}_done.txt",
+        config["checks"] + "chunks/eval/{iTarget}/{iSubset}/{iModel}/{iGen}_done_s.txt",
     shell:
         "touch {output[0]}"
 
