@@ -40,8 +40,10 @@ from sklearn.metrics import (
 )
 import snakemake  # gives access to snakemake.config
 import sys
+from pathlib import Path
 
-sys.path.insert(0, snakemake.config["scripts"])
+sys.path.insert(0, str(Path(__file__).parents[1]))
+#sys.path.insert(0, snakemake.config["scripts"])
 #sys.path.append('/mnt/work/workbench/hedvigs/snake_book/econ')
 from data_management.subsets import load_data
 #from .data_management.subsets import load_data
