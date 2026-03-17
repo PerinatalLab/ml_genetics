@@ -26,11 +26,11 @@ def make_logger(log_file, name, **kwargs):
     """
     header = "[%(levelname)1.1s %(asctime)s]"
     message = "%(message)s"
-    log_dir = "/mnt/work/hedvig/grepos/plab_workflow/logs/prediction/parameters/logfiles/"
+    log_dir = Path("/mnt/work/hedvig/grepos/plab_workflow/logs/prediction/parameters/logfiles/")
     if log_dir and not log_dir.exists():
         log_dir.mkdir(parents=True, exist_ok=True)
 
-    log_file = log_dir + log_file
+    log_file = str(log_dir) + log_file
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
     f1 = logging.FileHandler(log_file, mode="a+")

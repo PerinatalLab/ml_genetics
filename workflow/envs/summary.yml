@@ -1,0 +1,13 @@
+name: summary
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python
+  - numpy
+  - pandas
+  - scikit-learn
+  - pyyaml
+  - seaborn
+  - matplotlib
