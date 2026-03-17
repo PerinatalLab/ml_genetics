@@ -291,7 +291,8 @@ if __name__ == "__main__":
     MODEL_NAME = wildcards["iModel"]
     FOLD = int(wildcards["iFold"])
 
-    N = 20  # Number of repeated evaluations per parameter set
+    ## CHANGE: Adjust N and MAX_PARAM_SETS
+    N = 2  # Number of repeated evaluations per parameter set
     MAX_PARAM_SETS = 100  # Maximum number of parameter sets to evaluate
 
     STUDYNAME = f"{TARGET}_{SUBSET}_{MODEL_NAME}_{GEN}_{FOLD}"
