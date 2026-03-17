@@ -1,12 +1,15 @@
 import logging
-
+import os
 import numpy as np
 import pandas as pd
+from pathlib import Path
+
 import optuna
 from optuna.trial import TrialState
 
 
 import sys
+sys.path.insert(0, str(Path(__file__).parents[1]))
 
 sys.path.append("/mnt/work/hedvig/grepos/plab_workflow/")
 
@@ -23,7 +26,11 @@ def make_logger(log_file, name, **kwargs):
     """
     header = "[%(levelname)1.1s %(asctime)s]"
     message = "%(message)s"
+    log_dir = "/mnt/work/hedvig/grepos/plab_workflow/logs/prediction/parameters/logfiles/"
+    if log_dir and not log_dir.exists():
+        log_dir.mkdir(parents=True, exist_ok=True)
 
+    log_file = log_dir + log_file
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
     f1 = logging.FileHandler(log_file, mode="a+")
@@ -43,7 +50,7 @@ def log_study_results(study):
     direction = study.user_attrs["DIRECTION"]
     n_trials = study.user_attrs["TRIALS"]
     model_type = study.user_attrs["TYPE"]
-    log_file = f"/mnt/work/hedvig/grepos/plab_workflow/logs/prediction/parameters/{target}/{study_name}.log"
+    log_file = f"{study_name}.log"
 
     logger = make_logger(log_file, name="optuna_study")
 
@@ -141,7 +148,7 @@ def log_single_results(study):
     direction = study.user_attrs["DIRECTION"]
     n_trials = study.user_attrs["TRIALS"]
     model_type = study.user_attrs["TYPE"]
-    log_file = f"/mnt/work/hedvig/grepos/plab_workflow/logs/parameters/{target}/{study_name}.log"
+    log_file = f"{study_name}.log"
 
     logger = make_logger(log_file, name="optuna_study")
 
