@@ -50,7 +50,7 @@ def log_study_results(study):
     direction = study.user_attrs["DIRECTION"]
     n_trials = study.user_attrs["TRIALS"]
     model_type = study.user_attrs["TYPE"]
-    log_file = f"{study_name}.log"
+    log_file = f"/{study_name}.log"
 
     logger = make_logger(log_file, name="optuna_study")
 
@@ -148,7 +148,7 @@ def log_single_results(study):
     direction = study.user_attrs["DIRECTION"]
     n_trials = study.user_attrs["TRIALS"]
     model_type = study.user_attrs["TYPE"]
-    log_file = f"{study_name}.log"
+    log_file = f"/{study_name}.log"
 
     logger = make_logger(log_file, name="optuna_study")
 
