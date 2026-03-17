@@ -43,20 +43,20 @@ rule gens_done:
 
 
 ## folds_done: Helper rule to expand parameters
-rule folds_done:
+rule folds_done_c:
     input:
         expand(
             config["out_params"]
-            + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}.json",
+            + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}_c.json",
             iFold=FOLDS,
         ),
         expand(
             config["out_pred"]
-            + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}.csv",
+            + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}_c.csv",
             iFold=FOLDS,
         ),
     output:
-        config["checks"] + "chunks/{iTarget}/{iSubset}/{iModel}/{iGen}_done.txt",
+        config["checks"] + "chunks/{iTarget}/{iSubset}/{iModel}/{iGen}_done_c.txt",
     shell:
         "touch {output[0]}"
 
@@ -68,10 +68,11 @@ rule param_pred:
         check=config["checks"] + "datamgt.txt",
     output:
         best_params=config["out_params"]
-        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
-        score_dir=config["out_pred"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.csv",
+        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_c.json",
+        score_dir=config["out_scores"]
+        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_c.csv",
     log:
-        config["log"] + "prediction/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
+        config["log"] + "prediction/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}_c.txt",
     conda:
         "../envs/analysis.yml"
     shell:
@@ -83,15 +84,15 @@ rule param_pred:
 
 
 ## folds_done: Helper rule to expand parameters
-rule folds_done_s:
+rule folds_done:
     input:
         expand(
-            config["out_pred"]
-            + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}_s.csv",
+            config["out_scores"]
+            + "{{iTarget}}/{{iSubset}}/{{iModel}}_{{iGen}}_{iFold}.csv",
             iFold=FOLDS,
         ),
     output:
-        config["checks"] + "chunks/{iTarget}/{iSubset}/{iModel}/{iGen}_done_s.txt",
+        config["checks"] + "chunks/{iTarget}/{iSubset}/{iModel}/{iGen}_done.txt",
     shell:
         "touch {output[0]}"
 
@@ -100,16 +101,14 @@ rule folds_done_s:
 rule evaluate_model:
     input:
         script=config["scripts_analysis"] + "evaluate_model.py",
-        params=config["out_params"]
-        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.json",
+        params=config["out_params"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
     output:
         score_dir=config["out_scores"]
-        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.csv",
-        pred_dir=config["out_pred"]
-        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.csv",
+        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.csv",
+        pred_dir=config["out_pred"] + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.csv",
     log:
         config["log"]
-        + "prediction/evaluation/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}_s.txt",
+        + "prediction/evaluation/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
     conda:
         "../envs/evaluation.yml"
     shell:
@@ -128,10 +127,10 @@ rule tune_parameters:
         check=config["checks"] + "datamgt.txt",
     output:
         best_params=config["out_params"]
-        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.json",
+        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
     log:
         config["log"]
-        + "prediction/parameters/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}_s.txt",
+        + "prediction/parameters/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}.txt",
     conda:
         "../envs/analysis.yml"
     shell:
