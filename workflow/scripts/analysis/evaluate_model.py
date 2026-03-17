@@ -267,6 +267,7 @@ def predict_fold(params, data, scorer):
 
 
 if __name__ == "__main__":
+    print("Starting model evaluation...")
     parser = argparse.ArgumentParser(
         description="Model evaluation script. Loads tuned parameters from JSON, runs repeated test-set evaluation, and saves scores and predictions."
     )
