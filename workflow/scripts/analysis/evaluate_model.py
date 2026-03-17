@@ -340,8 +340,8 @@ if __name__ == "__main__":
     print(f"Scores saved to {score_file}")
 
     # Save predictions
-#    path = read_config("root_path")
-#    pred_dir = path + "results/analysis/predictions/"
-#    pred_file = pred_dir + f"pred_{STUDYNAME}.csv"
+    #    path = read_config("root_path")
+    #    pred_dir = path + "results/analysis/predictions/"
+    #    pred_file = pred_dir + f"pred_{STUDYNAME}.csv"
     pred_df.to_csv(pred_file, sep="\t", float_format="%.5f")
     print(f"Predictions saved to {pred_file}")

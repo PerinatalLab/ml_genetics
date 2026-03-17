@@ -111,7 +111,7 @@ rule evaluate_model:
         config["log"]
         + "prediction/evaluation/{iTarget}/{iSubset}_{iGen}_{iModel}_{iFold}_s.txt",
     conda:
-        "../envs/analysis.yml"
+        "../envs/evaluation.yml"
     shell:
         "python {input.script} \
             --out {output.pred_dir} \

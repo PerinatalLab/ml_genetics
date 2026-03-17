@@ -1,0 +1,13 @@
+name: evaluation
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python
+  - numpy
+  - pandas
+  - scikit-learn
+  - time
+  - pyarrow
+  - imbalanced-learn
