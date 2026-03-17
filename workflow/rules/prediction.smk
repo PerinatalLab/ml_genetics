@@ -112,7 +112,7 @@ rule evaluate_model:
         "../envs/analysis.yml"
     shell:
         "python {input.script} \
-            --data {input.params} \
+            --params {input.params} \
             --utils {output.score_dir} \
             --wild {wildcards} \
                 > {log} {logAll}"
