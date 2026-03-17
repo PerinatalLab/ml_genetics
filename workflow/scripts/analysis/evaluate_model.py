@@ -270,15 +270,16 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Model evaluation script. Loads tuned parameters from JSON, runs repeated test-set evaluation, and saves scores and predictions."
     )
-    parser.add_argument("-i", "--params", required=True, help="Input JSON file with tuned parameters")
-    parser.add_argument("-u", "--utils", required=True, help="Output path for scores TSV file")
+    parser.add_argument("-o", "--out", help="Input JSON file with tuned parameters")
+    parser.add_argument("-u", "--utils", help="Output path for scores TSV file")
     parser.add_argument("-d", "--data", help="Data path (passed through to load_data)")
     parser.add_argument("-p", "--pheno", help="Phenotype file")
     parser.add_argument("-w", "--wild", action=ParseKwargs, help="Wildcard key=value pairs")
-    args = parser.parse_intermixed_args()
-
+    args = parser.parse_known_args()
+    args = args[0] if len(args) > 0 else args
+    
     wildcards = args.wild
-    params_file = args.params
+    params_file = args.data
     score_file = args.utils
 
     TARGET = wildcards["iTarget"]
