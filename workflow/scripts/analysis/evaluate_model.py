@@ -282,6 +282,7 @@ if __name__ == "__main__":
     wildcards = args.wild
     params_file = args.data
     score_file = args.utils
+    pred_file = args.out
 
     TARGET = wildcards["iTarget"]
     SUBSET = wildcards["iSubset"]
@@ -338,8 +339,8 @@ if __name__ == "__main__":
     print(f"Scores saved to {score_file}")
 
     # Save predictions
-    path = read_config("root_path")
-    pred_dir = path + "results/analysis/predictions/"
-    pred_file = pred_dir + f"pred_{STUDYNAME}.csv"
+#    path = read_config("root_path")
+#    pred_dir = path + "results/analysis/predictions/"
+#    pred_file = pred_dir + f"pred_{STUDYNAME}.csv"
     pred_df.to_csv(pred_file, sep="\t", float_format="%.5f")
     print(f"Predictions saved to {pred_file}")

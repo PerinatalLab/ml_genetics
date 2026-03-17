@@ -103,7 +103,9 @@ rule evaluate_model:
         params=config["out_params"]
         + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.json",
     output:
-        score_dir=config["out_pred"]
+        score_dir=config["out_scores"]
+        + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.csv",
+        pred_dir=config["out_pred"]
         + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}_s.csv",
     log:
         config["log"]
@@ -112,6 +114,7 @@ rule evaluate_model:
         "../envs/analysis.yml"
     shell:
         "python {input.script} \
+            --out {output.pred_dir} \
             --data {input.params} \
             --utils {output.score_dir} \
             --wild {wildcards} \
