@@ -6,13 +6,13 @@
 ## make_tables: Helper rule to expand wildcard and generate all tables
 rule make_tables:
     input:
-        expand(config["out_tables"] + "report/{iGen}.byModelSNPs.tex", iGen=GENOME),
+        expand(config["out_tables"] + "{iGen}.byModelSNPs.tex", iGen=GENOME),
         expand(
-            config["out_tables"] + "report/{iSubset}.byModel_{iGen}.tex",
+            config["out_tables"] + "{iSubset}.byModel_{iGen}.tex",
             iSubset=SUBSETS,
             iGen=GENOME,
         ),
-        expand(config["out_tables"] + "report/{iModel}.byGenSNPs.tex", iModel=MODELS),
+        expand(config["out_tables"] + "{iModel}.byGenSNPs.tex", iModel=MODELS),
     output:
         config["checks"] + "tables_done.txt",
     shell:
@@ -25,7 +25,7 @@ rule gen_tables:
         script=config["scripts_tables"] + "make_tex_table.py",
         data=config["out_summary"] + "complete_summary.csv",
     output:
-        table=config["out_tables"] + "report/{iGen}.byModelSNPs.tex",
+        table=config["out_tables"] + "{iGen}.byModelSNPs.tex",
     log:
         config["log"] + "tables/{iGen}_modelSNPs.txt",
     shell:
@@ -39,10 +39,10 @@ rule gen_tables:
 # One subset, one gen
 rule subset_tables:
     input:
-        script=config["scripts_tables"] + "make_tex_table.py",
-        data=config["out_summary"] + "complete_summary.csv",
+        script=config["scripts_tables"] + "make_subset_table.py",
+        data=config["out_summary"] + "combined_{iSubset}.csv",
     output:
-        table=config["out_tables"] + "report/{iSubset}.byModel_{iGen}.tex",
+        table=config["out_tables"] + "{iSubset}.byModel_{iGen}.tex",
     log:
         config["log"] + "tables/{iSubset}_{iGen}_model.txt",
     shell:
@@ -59,7 +59,7 @@ rule model_tables:
         script=config["scripts_tables"] + "make_tex_table.py",
         data=config["out_summary"] + "complete_summary.csv",
     output:
-        table=config["out_tables"] + "report/{iModel}.byGenSNPs.tex",
+        table=config["out_tables"] + "{iModel}.byGenSNPs.tex",
     log:
         config["log"] + "tables/{iModel}_GenSNPs.txt",
     shell:
