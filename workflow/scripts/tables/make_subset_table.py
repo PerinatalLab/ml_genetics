@@ -42,6 +42,36 @@ from data_management.parsing_set import ParseKwargs
 
 
 def aggregate_df(df, sub, filtered, combined=True):
+    """Aggregate the input DataFrame by specified categories and calculate metrics.
+    Parameters:
+    df (pd.DataFrame): Input DataFrame
+    sub (str): Subset name
+    filtered (str): Filtered value
+    combined (bool): Whether to combine columns
+
+    Returns:
+    pd.DataFrame: Aggregated DataFrame
+    Notes:
+    This function performs the following steps:
+    1. Calculates all metrics using the `get_all_metrics` function from the `table_functions` module.
+    2. Divides the concurrent metrics using the `divide_concur` function from the `table_functions` module.
+    3. Renames the columns using the `rename_cols` function from the `table_functions` module.
+    4. Identifies categorical and numerical columns and row names for categorical columns.
+    5. Filters the DataFrame based on the specified subset and filtered value.
+    6. Aggregates the DataFrame by the specified categories and calculates the mean, median, and confidence intervals for the specified metrics.
+    Example:
+    >>> df = pd.DataFrame({
+    ...     'Model': ['A', 'A', 'B', 'B'],
+    ...     'Fold': [1, 2, 1, 2],
+    ...     'AUC(test)': [0.8, 0.85, 0.75, 0.78],
+    ...     'OR(test)': [2.5, 2.8, 2.0, 2.3]
+    ... })
+    >>> aggregated_df = aggregate_df(df, sub='A', filtered='test', combined=True)
+    >>> print(aggregated_df)
+      Model  Fold  AUC  OR
+    0     A     1  0.8  2.5
+    1     A     2  0.85 2.8
+    """
 
     df = tf.get_all_metrics(df)
     df = tf.divide_concur(df)
@@ -136,7 +166,6 @@ if __name__=='__main__':
 
     SUBSET      = wildcards['iSubset']
     GEN         = wildcards['iGen']
-    MODEL_NAME  = wildcards['iModel']
 
 
     # read files
