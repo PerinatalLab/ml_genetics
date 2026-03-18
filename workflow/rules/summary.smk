@@ -6,6 +6,7 @@ rule make_summary:
     input:
         expand(config["out_summary"] + "combined_{nModels}.csv", nModels=NMODELS),
         config["out_summary"] + "complete_summary.csv",
+        config["out_summary"] + "complete_scores.csv",
     output:
         config["checks"] + "summary_done.txt",
     shell:
@@ -69,8 +70,51 @@ rule combine_models:
                 --data {input.data}"
 
 
-## append all models to one df per subset, gen and fold
-rule append_models:
+## combine_subsets_scores: combine scores from different subsets to one df.
+rule combine_subsets_scores:
+    input:
+        expand(
+            config["out_summary"] + "combined_{iSubset}.csv",
+            iSubset=SUBSETS,
+        ),
+    output:
+        config["out_summary"] + "complete_scores.csv",
+    log:
+        config["log"] + "summary/complete_scores.txt",
+    run:
+        import pandas as pd
+
+        combined_df = pd.concat([pd.read_csv(f) for f in input]).to_csv(
+            output[0],
+            sep="\t",
+            index=False,
+            float_format="%.5f",
+        )
+
+
+## combine scores from different folds, genomes and models to one df per subset.
+rule combine_scores:
+    input:
+        script=config["scripts_postprocess"] + "combine_scores.py",
+        data=expand(
+            config["out_scores"] + "PTD/{{iSubset}}/{iModel}_{iGen}_{iFold}.csv",
+            iModel=MODELS,
+            iGen=GENOME,
+            iFold=FOLDS,
+        ),
+    output:
+        combined_models=config["out_summary"] + "combined_{iSubset}.csv",
+    log:
+        config["log"] + "summary/combined_{iSubset}.txt",
+    conda:
+        "../envs/summary.yml"
+    shell:
+        "python {input.script} --out {output.combined_models} \
+                --data {input.data}"
+
+
+## average predictions over all runs and save.
+rule average_predictions:
     input:
         script=config["scripts_postprocess"] + "combine_runs.py",
         data=expand(

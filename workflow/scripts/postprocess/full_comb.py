@@ -109,7 +109,7 @@ if __name__ == "__main__":
 
     # read files
 
-    pred_dir = path + "out/analysis/predictions/"
+    pred_dir = path + f"results/prediction/{TARGET}/"
     ###
 
     id_name = {"m": "Full_sentrix", "combine": "Preg_id", "f": "Full_sentrix"}
