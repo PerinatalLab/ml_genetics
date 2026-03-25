@@ -109,14 +109,14 @@ def get_model(params):
             kwargs["covariance_estimator"] = None
 
     elif model_name == "lrc":
-        kwargs["penalty"] = params["_penalty"]
+    #    kwargs["penalty"] = params["_penalty"]
         kwargs["tol"] = params["_tol"]
         kwargs["C"] = params["_C"]
         kwargs["fit_intercept"] = params["_fit_intercept"]
         kwargs["class_weight"] = params["_class_weight"]
         kwargs["max_iter"] = params["_max_iter"]
         kwargs["solver"] = params["_solver"]
-        kwargs["multi_class"] = params["_multi_class"]
+    #    kwargs["multi_class"] = params["_multi_class"]
         kwargs["l1_ratio"] = params["_l1_ratio"]
         kwargs["warm_start"] = params["_warm_start"]
 
