@@ -126,43 +126,42 @@ def create_model(trial):
             kwargs["covariance_estimator"] = None
 
     elif model_name == "lrc":
-        kwargs["penalty"] = trial.suggest_categorical(
-            "penalty", ["l1", "l2", "elasticnet"]
-        )
+        penalty = trial.suggest_categorical("penalty", ["l1", "l2", "elasticnet"])
         kwargs["warm_start"] = trial.suggest_categorical("warm_start", [False, True])
-#        if kwargs["penalty"] is not None:
-#            kwargs["multi_class"] = trial.suggest_categorical(
-#                "multi_class_l1", ["auto", "ovr"]
-#            )
         kwargs["C"] = trial.suggest_float("C", 1e-3, 3, log=True)
-        if kwargs["penalty"] != "elasticnet":
-#                kwargs["l1_ratio"] = None
-            if kwargs["penalty"] == "l1":
+        if penalty != "elasticnet":
+            if penalty == "l1":
                 kwargs["l1_ratio"] = 1.0
                 kwargs["solver"] = trial.suggest_categorical(
-                        "solver_l1", ["liblinear", "saga"]
-                    )
-            elif kwargs["penalty"] == "l2":
+                    "solver_l1", ["liblinear", "saga"]
+                )
+            elif penalty == "l2":
                 kwargs["l1_ratio"] = 0.0
                 kwargs["solver"] = trial.suggest_categorical(
-                        "solver_l2",
-                        ["lbfgs", "newton-cg", "newton-cholesky", "sag", "saga", "liblinear"],
-                    )
+                    "solver_l2",
+                    [
+                        "lbfgs",
+                        "newton-cg",
+                        "newton-cholesky",
+                        "sag",
+                        "saga",
+                        "liblinear",
+                    ],
+                )
             else:
                 raise ValueError("Invalid penalty name")
         else:
             kwargs["solver"] = trial.suggest_categorical("solver_en", ["saga"])
-            kwargs["l1_ratio"] = trial.suggest_float("l1_ratio_en", 1e-4, 0.99, log=True)
-#        else:
-#            kwargs["solver"] = trial.suggest_categorical(
-#                "solver_none", ["lbfgs", "newton-cg", "saga"]
-#            )
-#            kwargs["multi_class"] = trial.suggest_categorical(
-#                "multi_class_none", ["auto", "ovr", "multinomial"]
-#            )
+            kwargs["l1_ratio"] = trial.suggest_float(
+                "l1_ratio_en", 1e-4, 0.99, log=True
+            )
         kwargs["tol"] = trial.suggest_float("tol", 1e-6, 1, log=True)
-        kwargs["fit_intercept"] = trial.suggest_categorical("fit_intercept", [True, False])
-        kwargs["class_weight"] = trial.suggest_categorical("class_weight", ["balanced", None])
+        kwargs["fit_intercept"] = trial.suggest_categorical(
+            "fit_intercept", [True, False]
+        )
+        kwargs["class_weight"] = trial.suggest_categorical(
+            "class_weight", ["balanced", None]
+        )
         if kwargs.get("solver") == "sag":
             kwargs["max_iter"] = trial.suggest_int("sag_max_iter", int(1e5), int(1e7))
         else:
@@ -197,7 +196,9 @@ def create_model(trial):
         kwargs["bootstrap"] = trial.suggest_categorical("bootstrap", [True, False])
         if kwargs["bootstrap"]:
             kwargs["oob_score"] = trial.suggest_categorical("oob_score", [True, False])
-            kwargs["max_samples"] = trial.suggest_float("max_samples", 0.01, 0.99, log=True)
+            kwargs["max_samples"] = trial.suggest_float(
+                "max_samples", 0.01, 0.99, log=True
+            )
             kwargs["class_weight"] = trial.suggest_categorical(
                 "class_weight_b", ["balanced_subsample", None]
             )
@@ -233,9 +234,24 @@ def create_model(trial):
             kwargs["metric"] = trial.suggest_categorical(
                 "metric_ball",
                 [
-                    "euclidean", "l2", "minkowski", "p", "manhattan", "cityblock", "l1",
-                    "chebyshev", "infinity", "hamming", "canberra", "braycurtis", "jaccard",
-                    "dice", "rogerstanimoto", "russellrao", "sokalmichener", "sokalsneath",
+                    "euclidean",
+                    "l2",
+                    "minkowski",
+                    "p",
+                    "manhattan",
+                    "cityblock",
+                    "l1",
+                    "chebyshev",
+                    "infinity",
+                    "hamming",
+                    "canberra",
+                    "braycurtis",
+                    "jaccard",
+                    "dice",
+                    "rogerstanimoto",
+                    "russellrao",
+                    "sokalmichener",
+                    "sokalsneath",
                 ],
             )
         elif kwargs["algorithm"] == "kd_tree":
@@ -244,8 +260,17 @@ def create_model(trial):
             )
             kwargs["metric"] = trial.suggest_categorical(
                 "metric_kd",
-                ["euclidean", "l2", "minkowski", "p", "manhattan", "cityblock", "l1",
-                 "chebyshev", "infinity"],
+                [
+                    "euclidean",
+                    "l2",
+                    "minkowski",
+                    "p",
+                    "manhattan",
+                    "cityblock",
+                    "l1",
+                    "chebyshev",
+                    "infinity",
+                ],
             )
         elif kwargs["algorithm"] == "brute":
             kwargs["weights"] = trial.suggest_categorical(
@@ -283,7 +308,9 @@ def create_model(trial):
         kwargs["alpha"] = trial.suggest_float("alpha", 0.00001, 0.5, log=True)
         kwargs["batch_size"] = trial.suggest_int("batch_size", 10, 150)
         if kwargs["solver"] == "adam":
-            kwargs["warm_start"] = trial.suggest_categorical("warm_start", [False, True])
+            kwargs["warm_start"] = trial.suggest_categorical(
+                "warm_start", [False, True]
+            )
             if not kwargs.get("warm_start", False):
                 kwargs["early_stopping"] = trial.suggest_categorical(
                     "early_stopping", [True, False]
@@ -418,10 +445,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Hyperparameter tuning script. Runs Optuna optimisation and saves best parameters to JSON."
     )
-    parser.add_argument("-o", "--out", required=True, help="Output path for JSON parameter file")
+    parser.add_argument(
+        "-o", "--out", required=True, help="Output path for JSON parameter file"
+    )
     parser.add_argument("-d", "--data", help="Data path (passed through to load_data)")
     parser.add_argument("-p", "--pheno", help="Phenotype file")
-    parser.add_argument("-w", "--wild", action=ParseKwargs, help="Wildcard key=value pairs")
+    parser.add_argument(
+        "-w", "--wild", action=ParseKwargs, help="Wildcard key=value pairs"
+    )
     args = parser.parse_known_args()
     args = args[0] if len(args) > 0 else args
 
@@ -433,7 +464,7 @@ if __name__ == "__main__":
     GEN = wildcards["iGen"]
     MODEL_NAME = wildcards["iModel"]
     FOLD = int(wildcards["iFold"])
-    
+
     ### CHANGE: Adjust TRIALS
     TRIALS = 500
     n_train_iter = 30 if MODEL_NAME == "nn" else 20
