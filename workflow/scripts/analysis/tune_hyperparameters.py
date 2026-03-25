@@ -127,37 +127,39 @@ def create_model(trial):
 
     elif model_name == "lrc":
         kwargs["penalty"] = trial.suggest_categorical(
-            "penalty", ["l1", "l2", "elasticnet", None]
+            "penalty", ["l1", "l2", "elasticnet"]
         )
         kwargs["warm_start"] = trial.suggest_categorical("warm_start", [False, True])
-        if kwargs["penalty"] is not None:
-            kwargs["multi_class"] = trial.suggest_categorical(
-                "multi_class_l1", ["auto", "ovr"]
-            )
-            kwargs["C"] = trial.suggest_float("C", 1e-3, 3, log=True)
-            if kwargs["penalty"] != "elasticnet":
-                kwargs["l1_ratio"] = None
-                if kwargs["penalty"] == "l1":
-                    kwargs["solver"] = trial.suggest_categorical(
+#        if kwargs["penalty"] is not None:
+#            kwargs["multi_class"] = trial.suggest_categorical(
+#                "multi_class_l1", ["auto", "ovr"]
+#            )
+        kwargs["C"] = trial.suggest_float("C", 1e-3, 3, log=True)
+        if kwargs["penalty"] != "elasticnet":
+#                kwargs["l1_ratio"] = None
+            if kwargs["penalty"] == "l1":
+                kwargs["l1_ratio"] = 1.0
+                kwargs["solver"] = trial.suggest_categorical(
                         "solver_l1", ["liblinear", "saga"]
                     )
-                elif kwargs["penalty"] == "l2":
-                    kwargs["solver"] = trial.suggest_categorical(
+            elif kwargs["penalty"] == "l2":
+                kwargs["l1_ratio"] = 0.0
+                kwargs["solver"] = trial.suggest_categorical(
                         "solver_l2",
                         ["lbfgs", "newton-cg", "newton-cholesky", "sag", "saga", "liblinear"],
                     )
-                else:
-                    raise ValueError("Invalid penalty name")
             else:
-                kwargs["solver"] = trial.suggest_categorical("solver_en", ["saga"])
-                kwargs["l1_ratio"] = trial.suggest_float("l1_ratio_en", 1e-4, 0.99, log=True)
+                raise ValueError("Invalid penalty name")
         else:
-            kwargs["solver"] = trial.suggest_categorical(
-                "solver_none", ["lbfgs", "newton-cg", "saga"]
-            )
-            kwargs["multi_class"] = trial.suggest_categorical(
-                "multi_class_none", ["auto", "ovr", "multinomial"]
-            )
+            kwargs["solver"] = trial.suggest_categorical("solver_en", ["saga"])
+            kwargs["l1_ratio"] = trial.suggest_float("l1_ratio_en", 1e-4, 0.99, log=True)
+#        else:
+#            kwargs["solver"] = trial.suggest_categorical(
+#                "solver_none", ["lbfgs", "newton-cg", "saga"]
+#            )
+#            kwargs["multi_class"] = trial.suggest_categorical(
+#                "multi_class_none", ["auto", "ovr", "multinomial"]
+#            )
         kwargs["tol"] = trial.suggest_float("tol", 1e-6, 1, log=True)
         kwargs["fit_intercept"] = trial.suggest_categorical("fit_intercept", [True, False])
         kwargs["class_weight"] = trial.suggest_categorical("class_weight", ["balanced", None])
