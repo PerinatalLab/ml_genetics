@@ -124,7 +124,7 @@ rule evaluate_model:
 rule tune_parameters:
     input:
         script=config["scripts_analysis"] + "tune_hyperparameters.py",
-        check=config["checks"] + "datamgt.txt",
+#        check=config["checks"] + "datamgt.txt",
     output:
         best_params=config["out_params"]
         + "{iTarget}/{iSubset}/{iModel}_{iGen}_{iFold}.json",
