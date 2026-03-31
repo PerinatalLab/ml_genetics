@@ -11,6 +11,7 @@ resources/*
 !workflow/*
 results
 results/**
+!results/report/*
 .gitignore
 !.gitattributes
 !.editorconfig

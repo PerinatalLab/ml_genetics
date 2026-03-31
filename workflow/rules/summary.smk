@@ -134,3 +134,37 @@ rule average_predictions:
         --out {output.average_pred} \
         --data {input.data} \
         --wild {wildcards}"
+
+## average predictions over all runs and save.
+rule sum_model_params:
+    input:
+        data=expand(
+            config["out_summary"] + "params/{{iTarget}}/{{iModel}}_{iSubset}.csv",
+            iSubset=SUBSETS,
+        ),
+    output:
+        hyperpars=config["out_summary"] + "params/{iTarget}/{iModel}.csv",
+    log:
+        config["log"] + "summary/{iTarget}/hyperpar_{iModel}.txt",
+    conda:
+        "../envs/summary.yml"
+    script:
+        config["scripts_postprocess"] + "sum_hyperparameters.py"
+
+## average predictions over all runs and save.
+rule sum_subset_model_params:
+    input:
+        data=expand(
+            config["out_params"]
+            + "{{iTarget}}/{{iSubset}}/{{iModel}}_{iGen}_{iFold}.json",
+            iGen=GENOME,
+            iFold=FOLDS,
+        ),
+    output:
+        hyperpars=config["out_summary"] + "params/{iTarget}/{iModel}_{iSubset}.csv",
+    log:
+        config["log"] + "summary/{iTarget}/hyperpar_{iModel}_{iSubset}.txt",
+    conda:
+        "../envs/summary.yml"
+    script:
+        config["scripts_postprocess"] + "sum_hyperparameters.py"
