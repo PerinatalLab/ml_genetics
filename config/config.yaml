@@ -19,7 +19,7 @@ src_data_pheno   : "resources/data/pheno_files/"
 scripts_analysis : "workflow/scripts/analysis/"
 scripts_tables   : "workflow/scripts/tables/"
 scripts_data_mgt : "workflow/scripts/data_management/"
-scripts_postprocess : "workflow/scripts/postprocess/"
+scripts_postprocess : "/scripts/postprocess/"
 
 out_data         : "results/data/"
 out_data_gen     : "results/data/gen/"

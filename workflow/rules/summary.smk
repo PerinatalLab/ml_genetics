@@ -167,4 +167,4 @@ rule sum_subset_model_params:
     conda:
         "../envs/summary.yml"
     script:
-        config["scripts_postprocess"] + "sum_hyperparameters.py"
+        workflow.basedir + config["scripts_postprocess"] + "sum_hyperparameters.py"
