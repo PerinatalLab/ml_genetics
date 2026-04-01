@@ -168,12 +168,16 @@ def create_model(trial):
             kwargs["max_iter"] = trial.suggest_int("low_max_iter", int(1e3), int(5e3))
 
     elif model_name == "qda":
-        if SUBSET == "top5":
-            kwargs["reg_param"] = trial.suggest_float("t5_reg_param", 0.01, 1, log=True)
-            kwargs["tol"] = trial.suggest_float("t5_tol", 1e-7, 1, log=True)
+        if SUBSET == "top5" or SUBSET == "top23":
+            kwargs["reg_param"] = trial.suggest_float("top_reg_param", 0.01, 1, log=True)
+            kwargs["tol"] = trial.suggest_float("top_tol", 1e-7, 1, log=True)
+            kwargs["solver"] = trial.suggest_categorical("top_solver", ["svd", "eigen"])
         else:
-            kwargs["reg_param"] = trial.suggest_float("reg_param", 0.1, 1, log=True)
+            kwargs["solver"] = "eigen"
             kwargs["tol"] = trial.suggest_float("tol", 1e-5, 1, log=True)
+            
+        if kwargs["solver"] == "eigen":
+            kwargs["shrinkage"] = trial.suggest_float("shrinkage", 0.0, 1.0)
 
     elif model_name == "rfc":
         kwargs["criterion"] = trial.suggest_categorical(
