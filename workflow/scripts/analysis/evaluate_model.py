@@ -121,9 +121,12 @@ def get_model(params):
         kwargs["warm_start"] = params["_warm_start"]
 
     elif model_name == "qda":
+        kwargs["solver"] = params["_solver"]
         kwargs["reg_param"] = params["_reg_param"]
         kwargs["store_covariance"] = params["_store_covariance"]
         kwargs["tol"] = params["_tol"]
+        if kwargs["solver"] == "eigen":
+            kwargs["shrinkage"] = params["_shrinkage"]
 
     elif model_name == "rfc":
         kwargs["n_estimators"] = params["_n_estimators"]
