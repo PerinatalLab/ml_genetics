@@ -12,6 +12,7 @@ resources/*
 results
 results/**
 !results/report/*
+!results/scores/*
 .gitignore
 !.gitattributes
 !.editorconfig
