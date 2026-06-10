@@ -83,7 +83,7 @@ def rename_snps(snp_list, n="tops"):
 def read_config(access_name, path='/mnt/work/hedvig/grepos/plab_workflow/config'):
     
     #    with open('/mnt/work/workbench/hedvigs/snake_book/econ/config.yaml', 'r') as yamlfile:
-    with open(path + '/config.yaml', 'r') as yamlfile:
+    with open(path + 'config/config.yaml', 'r') as yamlfile:
 
         data = yaml.load(yamlfile, Loader=yaml.FullLoader)
         return data[access_name]

@@ -1,3 +1,19 @@
+
+# Dictionaries
+subsets: ["top5", "top29", "selected", "all"]
+genomes: ["m", "f", "combine"]
+models: [
+    "bnb",
+    "knn",
+    "lda",
+    "lrc",
+    "nn",
+    "qda",
+    "rfc",
+    "svc"]  # all models to be tuned
+#all_models_p: ["nn", "bnb", "lrc", "qda", "svc", "lda", "rfc", "knn", "PgsPolZ", "PgsChris"]
+folds:  [0, 1, 2, 3, 4]
+
 data_path: "/mnt/work/workbench/hedvigs/hedvproj/hed_ML/results/geno/plink"
 
 
