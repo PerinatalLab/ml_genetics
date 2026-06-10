@@ -38,7 +38,7 @@ def get_selected_snps(x_data, y_data, gen):
         for fold in read_config('folds')
     }
 
-    selected_snps = pd.DataFrame.from_dict(rows, orient='index')
+    selected_snps = pd.DataFrame.from_dict(rows)
     return selected_snps
 
 
@@ -49,4 +49,4 @@ if __name__ == "__main__":
     y_file = path + 'results/data/y_data.feather' 
     selected_snps = get_selected_snps(x_data, y_file, gen)
     snp_file = path + f'results/report/selected_snps_{gen}.csv'
-    selected_snps.to_csv(snp_file, index_label='Fold')
+    selected_snps.to_csv(snp_file, sep='\t', index=False)
