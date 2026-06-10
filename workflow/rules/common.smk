@@ -19,7 +19,7 @@ MODELS = [
 ]  # all models to be tuned
 GENOME = ["m", "f", "combine"]  # maternal, fetal, combined genotype data
 FOLDS = [0, 1, 2, 3, 4]
-SUBSETS = ["top5", "top23", "selected", "all"]  # feature subsets to be tuned
+SUBSETS = ["top5", "top29", "selected", "all"]  # feature subsets to be tuned
 NMODELS = [1, 2, 3, 4, 5, 6, 7, 8]  # number of models to be included in summary tables
 
 

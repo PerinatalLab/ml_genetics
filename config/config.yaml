@@ -1,5 +1,6 @@
 data_path: "/mnt/work/workbench/hedvigs/hedvproj/hed_ML/results/geno/plink"
 
+
 # Pathways
 root_path      : "/mnt/work/hedvig/grepos/plab_workflow/"
 
@@ -12,6 +13,7 @@ log            : "logs/"
 results        : "results/"
 checks         : "results/checks/"
 scripts        : "workflow/scripts/"
+snp_list       : "config/snplist.list"
 
 src_data         : "resources/data/"
 src_data_pheno   : "resources/data/pheno_files/"

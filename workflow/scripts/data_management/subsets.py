@@ -144,7 +144,9 @@ def load_and_preprocess_data(study_id):
     elif subset == "reduced":
         x_data = reduce_features(x_data, y_file, gen, k, fold, trait)
     elif "top" in subset:
-        snp_list = read_config('top_path')
+#        snp_list = read_config('snp_list')
+        with open(read_config('snp_list')) as f:
+          snp_list = [line.strip() for line in f if line.strip()]
         if gen == 'combine':
             snp_list    = rename_snps(snp_list, subset)
         x_data = x_data[snp_list]
@@ -193,7 +195,10 @@ def load_data(study_id):
     elif subset == "reduced":
         x_data = reduce_features(x_data, y_file, gen, k, fold, trait)
     elif "top" in subset:
-        snp_list = read_config('top_path')
+        with open(read_config('snp_list')) as f:
+          snp_list = [line.strip() for line in f if line.strip()]
+#        snp_list = read_config('snp_list')
+#        snp_list = snp_list[:29]
         if gen == 'combine':
             snp_list    = rename_snps(snp_list, subset)
         else:
