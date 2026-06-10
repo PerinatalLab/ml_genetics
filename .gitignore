@@ -9,9 +9,10 @@ resources/*
 !workflow
 !workflow/**
 !workflow/*
-results
+workflow/.snakemake/**
 results/**
 !results/report/*
+!results/scores/
 !results/scores/*
 .gitignore
 !.gitattributes
@@ -20,7 +21,8 @@ results/**
 !.test
 !LICENSE
 !README.md
-.snakemake/*
+.snakemake/**
+*.log
 
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
