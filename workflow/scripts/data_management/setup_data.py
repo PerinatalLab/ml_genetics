@@ -88,6 +88,11 @@ def read_config(access_name, path='/mnt/work/hedvig/grepos/plab_workflow/config'
         data = yaml.load(yamlfile, Loader=yaml.FullLoader)
         return data[access_name]
 
+def read_smk_config(access_name, path='/mnt/work/hedvig/grepos/plab_workflow/workflow/rules/common.smk'):
+    data = {}
+    exec(open(path).read(), {"__builtins__": {}}, data)
+    return data[access_name]
+
 
 def fold_summary(y_data=None, k=5):
     if not isinstance(y_data, pd.DataFrame):

@@ -12,7 +12,7 @@ workflow/.snakemake/**
 results/**
 !results/report/*
 !results/scores/
-!results/scores/*
+!results/scores/**
 #.gitignore
 !.gitattributes
 !.editorconfig
