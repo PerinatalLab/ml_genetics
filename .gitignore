@@ -10,7 +10,8 @@ resources/**
 workflow/.snakemake/**
 !results/
 results/**
-!results/report/*
+!results/report/
+!results/report/**
 !results/scores/
 !results/scores/**
 #.gitignore
