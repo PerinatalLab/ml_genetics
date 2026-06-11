@@ -28,7 +28,7 @@ sys.path.append(path)
 # econ\out\tables\sum_file.csv
 app = Dash(__name__)
 
-sum_file = f'{path}/results/report/sum_file_seltop.csv'
+sum_file = f'{path}/results/report/sum_file_26.csv'
 df = pd.read_csv(sum_file)
 df.drop(columns=['Unnamed: 0'], inplace=True)
 
