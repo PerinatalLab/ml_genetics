@@ -143,7 +143,7 @@ def save_tex(df, filename, site="home"):
     """
     
     if site != "home":
-        file_path = f"/home/hedvigs/PycharmProjects/homewrs/plab_workflow/results/report/tables/{filename}.tex"
+        file_path = f"/home/hedvigs/PycharmProjects/homewrs/plab_workflow/results/Report/Tables/{filename}.tex"
 
     else:
         file_path = f"/home/hedvigs/gitrepos/plab_workflow/results/report/tables/{filename}.tex"
@@ -620,7 +620,8 @@ def name_models(df):
 
 
 def format_df(df, gen=None, nsub=None, sub=None, mod=None):
-    df.drop(columns=["Unnamed: 0"], inplace=True)
+    if df.columns[0] == "Unnamed: 0":
+        df.drop(columns=["Unnamed: 0"], inplace=True)
     if gen != None:
         df = df[df.gen == gen]
     if sub != None:
@@ -633,9 +634,10 @@ def format_df(df, gen=None, nsub=None, sub=None, mod=None):
 
 
 def rename_subsets(df):
-    df.loc[df["subset"] == "tops", "subset"] = "Top23"
+    df.loc[df["subset"] == "top29", "subset"]  = "Top29"
+    df.loc[df["subset"] == "tops", "subset"] = "Top29"
     df.loc[df["subset"] == "top5", "subset"] = "Top5"
-    df.loc[df["subset"] == "all", "subset"] = "All"
+    df.loc[df["subset"] == "all", "subset"] = "Full"
     df.loc[df["subset"] == "selected", "subset"] = "Selected"
     return df
 
