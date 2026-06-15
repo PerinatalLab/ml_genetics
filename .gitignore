@@ -10,6 +10,8 @@ resources/**
 workflow/.snakemake/**
 !results/
 results/**
+!results/Report/
+!results/Report/**
 !results/report/
 !results/report/**
 !results/scores/
