@@ -29,8 +29,8 @@ sys.path.append(path)
 app = Dash(__name__)
 
 sum_file = f'{path}/results/report/sum_file_26.csv'
-df = pd.read_csv(sum_file)
-df.drop(columns=['Unnamed: 0'], inplace=True)
+df = pd.read_csv(sum_file, sep='\t')
+#df.drop(columns=['Unnamed: 0'], inplace=True)
 
 op = [{'label': i, 'value': i} for i in df.columns]
 numerical_cols = df.select_dtypes(include=[np.number]).columns.tolist()
@@ -67,7 +67,7 @@ app.layout = html.Div([
             value=[], 
             inline=True
         ),
-        dcc.Dropdown(id='filter-options', options=[], multi=False),
+        dcc.Dropdown(id='filter-options', options=[], multi=False), #True),
         html.P("x-axis:"),
         dcc.Dropdown(
             id='x-axis', 
