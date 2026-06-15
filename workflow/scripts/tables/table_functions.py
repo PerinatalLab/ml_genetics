@@ -114,15 +114,14 @@ def agg_table(
 def rename_models(df, colname="Model"):
     modelname = {
         "bnb": "B Naive Bayes",
-        "lrc": "Log. Regression",
-        "rfc": "Random Forest",
-        "dtc": "Decision Tree",
-        "svc": "Support Vector",
-        "lda": "LDA",
-        "qda": "QDA",
-        "PGS": "Polygenic Score",
         "knn": "k-Nearest Neighbor",
+        "lda": "LDA",
+        "lrc": "Log. Regression",
         "nn": "Neural Network",
+        "qda": "QDA",
+        "rfc": "Random Forest",
+        "svc": "Support Vector",
+        "PGS": "Polygenic Score",
     }
 
     for i, mod in enumerate(df[colname]):
