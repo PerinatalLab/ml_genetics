@@ -143,9 +143,10 @@ def save_tex(df, filename, site="home"):
     """
     
     if site != "home":
-        file_path = f"/home/hedvigs/PycharmProjects/homewrs/snake_book/econ/out/tables/{filename}.tex"
+        file_path = f"/home/hedvigs/PycharmProjects/homewrs/plab_workflow/results/report/tables/{filename}.tex"
+
     else:
-        file_path = f"/home/hedvigs/snake_book/econ/out/tables/{filename}.tex"
+        file_path = f"/home/hedvigs/gitrepos/plab_workflow/results/report/tables/{filename}.tex"
     # Get the number of columns in the DataFrame
     num_columns = len(df.columns)
     num_index = len(df.index.names)
