@@ -23,8 +23,8 @@ elif hostname == 'hedvig-hp-elitedesk-800-g5-twr':
 elif hostname == 'work-computer':
     path = '/mnt/work/workbench/hedvigs/snake_book/econ'
     site = 'server'
-elif hostname == 'wl-241113-007':
-    path = '/home/hedvigs/wslGit/snake_book/econ'
+elif hostname == 'SilverFlex':
+    path = '/home/hedvigs/gitrepos/plab_workflow'
     site = 'silverFlex'
 
 sys.path.append(path)
