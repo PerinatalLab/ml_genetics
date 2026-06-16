@@ -151,7 +151,7 @@ def save_tex(df, filename, site="home"):
     if type(df.columns) == pd.MultiIndex:
         num_funcs = len(df.columns.levels[0])
     else:
-        num_funcs = -1
+        num_funcs = 0
     num_rows = len(df.index)
     print(num_rows)
     print(num_columns)
