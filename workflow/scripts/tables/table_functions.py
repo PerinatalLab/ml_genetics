@@ -169,7 +169,7 @@ def save_tex(df, filename, site="home"):
             file_path,
             column_format=column_format,
             position="H",
-            float_format='%.2E',
+            float_format='%.2e',
             label=f"tab:{filename}",
             caption=f"{filename.split('_')[0]}",
 #            index=False,
