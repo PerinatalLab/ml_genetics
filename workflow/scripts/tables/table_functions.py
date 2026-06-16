@@ -148,8 +148,12 @@ def save_tex(df, filename, site="home"):
     # Get the number of columns in the DataFrame
     num_columns = len(df.columns)
     num_index = len(df.index.names)
-    num_funcs = len(df.columns.levels[0])
+    if type(df.columns) == pd.MultiIndex:
+        num_funcs = len(df.columns.levels[0])
+    else:
+        num_funcs = -1
     num_rows = len(df.index)
+    print(num_rows)
     print(num_columns)
     print(num_funcs)
     longtable = None
@@ -160,21 +164,32 @@ def save_tex(df, filename, site="home"):
 
     # Create the column format string: one "l" followed by "r" repeated for each column in df
     column_format = "l" * num_index + "|" + "r" * num_columns
-
-    df.to_latex(
-        file_path,
-        convert_css=True,
-        column_format=column_format,
-        position="H",
-        position_float=pos_float,
-        hrules=True,
-        clines="skip-last;index",
-        label=f"tab:{filename}",
-        caption=f"{filename.split('_')[0]}",
-        multirow_align="t",
-        multicol_align="c|",
-        environment=longtable,
-    )
+    if num_funcs <= 0:
+        df.to_latex(
+            file_path,
+            column_format=column_format,
+            position="H",
+            float_format='%.2E',
+            label=f"tab:{filename}",
+            caption=f"{filename.split('_')[0]}",
+            index=False,
+            longtable=longtable,
+        )
+    else:
+        df.to_latex(
+            file_path,
+            convert_css=True,
+            column_format=column_format,
+            position="H",
+            position_float=pos_float,
+            hrules=True,
+            clines="skip-last;index",
+            label=f"tab:{filename}",
+            caption=f"{filename.split('_')[0]}",
+            multirow_align="t",
+            multicol_align="c|",
+            environment=longtable,
+        )
     print("Table saved")
     # Read the LaTeX file to modify it
     if longtable == None:
@@ -185,12 +200,12 @@ def save_tex(df, filename, site="home"):
         latex_content = latex_content.replace(
             r"\centering",
             r"""\centering
-    \begin{footnotesize}""",
+        \begin{footnotesize}""",
         )
         latex_content = latex_content.replace(
             r"\end{tabular}",
             r"""\end{tabular}
-    \end{footnotesize}""",
+        \end{footnotesize}""",
         )
 
         # Split content to manipulate specific parts
