@@ -132,7 +132,7 @@ def rename_models(df, colname="Model"):
 
 def save_tex(df, filename, site="home"):
     """
-    Save a DataFrame as a LaTeX table with custom formatting and optional longtable environment based on the number of rows.
+    Save a styled DataFrame as a LaTeX table with custom formatting and optional longtable environment based on the number of rows.
      Parameters:
     df (pd.DataFrame): DataFrame to save
     filename (str): Name of the file to save
@@ -304,7 +304,180 @@ def save_tex(df, filename, site="home"):
 
     print("Table saved and customized.")
 
+def save_df_to_tex(df, filename, site="home"):
+    """
+    Save a simple DataFrame as a LaTeX table with custom formatting and optional longtable environment based on the number of rows.
+     Parameters:
+    df (pd.DataFrame): DataFrame to save
+    filename (str): Name of the file to save
+    site (str): Site for file path
+    Returns:
+    None
+    """
+    
+    if site != "silverFlex":
+        file_path = f"/home/hedvigs/PycharmProjects/homewrs/plab_workflow/results/Report/Tables/{filename}.tex"
+    else:
+        file_path = f"/home/hedvigs/gitrepos/plab_workflow/results/Report/Tables/{filename}.tex"
+    # Get the number of columns in the DataFrame
+    num_columns = len(df.columns)
+    num_index = len(df.index.names)
+    if type(df.columns) == pd.MultiIndex:
+        num_funcs = len(df.columns.levels[0])
+    else:
+        num_funcs = 0
+    num_rows = len(df.index)
+    print(num_rows)
+    print(num_columns)
+    print(num_funcs)
+    longtable = None
+    pos_float = "centering"
+    if num_rows >= 26:
+        longtable = "longtable"
+        pos_float = None
 
+    # Create the column format string: one "l" followed by "r" repeated for each column in df
+    column_format = "l" * num_columns + "|r"
+    if num_funcs <= 0:
+        df.to_latex(
+            file_path,
+            column_format=column_format,
+            position="H",
+            float_format='%.2e',
+            label=f"tab:{filename}",
+            caption=f"{filename.split('_')[0]}",
+#            index=False,
+            longtable=longtable,
+        )
+    else:
+        df.to_latex(
+            file_path,
+            convert_css=True,
+            column_format=column_format,
+            position="H",
+            position_float=pos_float,
+            hrules=True,
+            clines="skip-last;index",
+            label=f"tab:{filename}",
+            caption=f"{filename.split('_')[0]}",
+            multirow_align="t",
+            multicol_align="c|",
+            environment=longtable,
+        )
+    print("Table saved")
+    # Read the LaTeX file to modify it
+    if longtable == None:
+        with open(file_path, "r") as f:
+            latex_content = f.read()
+
+        # Insert the custom LaTeX commands
+        latex_content = latex_content.replace(
+            r"\centering",
+            r"""\centering
+        \begin{footnotesize}""",
+        )
+        latex_content = latex_content.replace(
+            r"\end{tabular}",
+            r"""\end{tabular}
+        \end{footnotesize}""",
+        )
+
+        # Split content to manipulate specific parts
+        lines = latex_content.split("\\")
+
+        # Construct new header line with proper formatting for LaTeX
+        header_line_index = (
+            9 + (num_columns - num_funcs) - 1
+        )  # Assuming header is on the 3rd line
+        header_line = lines[header_line_index]
+        print(header_line)
+        # Extract the current column names for proper placement
+        current_columns = [
+            col.strip() for col in header_line.split(" & ") if col.strip()
+        ]
+        print(current_columns)
+        col_headers = " & ".join(
+            current_columns[:]
+        )  # Skip the initial empty and index column parts
+        print(col_headers)
+        new_header_line = (
+            r" " + r" & ".join(df.index.names) + r" & " + col_headers
+        )  # + r" \\ "  # New header line with LaTeX format
+        print(new_header_line)
+
+        # Update LaTeX content with new header line
+        lines[header_line_index] = new_header_line
+        lines[header_line_index + 2] = (
+            r" "  # r" & ".join(df.index.names) + " & " + " & " * (num_columns - 1) + r" \\"  # Modify to use `\\` for LaTeX
+        )
+        print(lines[10:14])
+        # Join lines back together
+        modified_latex_content = "\\".join(lines)
+        modified_latex_content = modified_latex_content.replace(
+            r"""\\ \\""", r""" \\ """
+        )
+
+        modified_latex_content = modified_latex_content.replace(r"95%", r"95\%")
+
+        # Write the modified LaTeX content back to the file
+        with open(file_path, "w") as f:
+            f.write(modified_latex_content)
+    else:
+        with open(file_path, "r") as f:
+            latex_content = f.read()
+
+        # Split content to manipulate specific parts
+        lines = latex_content.split("\\")
+
+        # Construct new header line with proper formatting for LaTeX
+        header_line_index = 7   # Assuming header is on the 3rd line
+        header_line = lines[header_line_index]
+        print("header", header_line)
+        # Extract the current column names for proper placement
+        current_columns = [
+            col.strip() for col in header_line.split(" & ") if col.strip()
+        ]
+        print(current_columns)
+        col_headers = " & ".join(
+            current_columns[:]
+        )  # Skip the initial empty and index column parts
+        print(col_headers)
+        new_header_line = (
+            r" " + r" & ".join(df.index.names) + r" & " + col_headers
+        )  # + r" \\ "  # New header line with LaTeX format
+        print(new_header_line)
+
+        # Update LaTeX first header line
+        lines[header_line_index] = new_header_line
+        lines[header_line_index + 2] = r" "
+        print(lines[10:14])
+        # Join lines back together
+        modified_latex_content = "\\".join(lines)
+        modified_latex_content = modified_latex_content.replace(
+            r"""\\ \\""", r""" \\ """
+        )
+
+        #        print(lines[header_line_index + num_funcs + 12])
+        second_header_line_index = header_line_index + num_funcs + 12
+        # Update LaTeX second header line
+        lines[second_header_line_index] = new_header_line
+        lines[second_header_line_index + 2] = r" "
+        print(lines[22:26])
+        # Join lines back together
+        modified_latex_content = "\\".join(lines)
+        modified_latex_content = modified_latex_content.replace(
+            r"""\\ \\""", r""" \\ """
+        )
+        # modified_latex_content = modified_latex_content.replace(r"cline{1-2}", r"cline{1-2} \pagebreak")
+
+        modified_latex_content = modified_latex_content.replace(r"95%", r"95\%")
+
+        # Write the modified LaTeX content back to the file
+        #with open(file_path, "w") as f:
+        #    f.write(modified_latex_content)
+
+    print("Table saved and customized.")
+    
 def get_subset(y_data, colname="Model", rowname="bnb"):
     sub_data = y_data[y_data[colname] == rowname]
 
