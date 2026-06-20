@@ -1,0 +1,16 @@
+{
+    "409": {
+        "number": 409,
+        "value": 0.5353628845,
+        "duration": "00:59",
+        "alpha": 0.3117927632,
+        "binarize": 0.9078983171,
+        "fit_prior": true,
+        "_alpha": 0.3117927632,
+        "_binarize": 0.9078983171,
+        "_class_prior": null,
+        "_fit_prior": true,
+        "_force_alpha": "warn",
+        "_pruned": null
+    }
+}

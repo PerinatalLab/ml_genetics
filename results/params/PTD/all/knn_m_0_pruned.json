@@ -1,0 +1,26 @@
+{
+    "495": {
+        "number": 495,
+        "value": 0.5433333627,
+        "duration": "06:41",
+        "algorithm": "ball_tree",
+        "leaf_size": 53,
+        "metric_auto": null,
+        "metric_ball": "russellrao",
+        "metric_brute": null,
+        "metric_kd": null,
+        "n_neighbors": 17,
+        "p": null,
+        "weights_brute": null,
+        "weights_kd": "uniform",
+        "_algorithm": "ball_tree",
+        "_leaf_size": 53,
+        "_metric": "russellrao",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 17,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": "uniform"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "91": {
+        "number": 91,
+        "value": 0.526091796,
+        "duration": "04:05",
+        "reg_param": 0.5267084084,
+        "tol": 0.0004373601,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.5267084084,
+        "_store_covariance": false,
+        "_tol": 0.0004373601
+    }
+}

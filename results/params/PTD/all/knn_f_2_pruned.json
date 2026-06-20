@@ -1,0 +1,26 @@
+{
+    "381": {
+        "number": 381,
+        "value": 0.5548864297,
+        "duration": "42:16",
+        "algorithm": "auto",
+        "leaf_size": 31,
+        "metric_auto": "minkowski",
+        "metric_ball": null,
+        "metric_brute": null,
+        "metric_kd": null,
+        "n_neighbors": 15,
+        "p": 1.9317221345,
+        "weights_brute": "distance",
+        "weights_kd": null,
+        "_algorithm": "auto",
+        "_leaf_size": 31,
+        "_metric": "minkowski",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 15,
+        "_p": 1.9317221345,
+        "_pruned": null,
+        "_weights": "distance"
+    }
+}

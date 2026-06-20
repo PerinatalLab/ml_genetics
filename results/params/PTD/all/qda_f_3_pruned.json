@@ -1,0 +1,14 @@
+{
+    "460": {
+        "number": 460,
+        "value": 0.5593778451,
+        "duration": "01:07",
+        "reg_param": 0.1017720632,
+        "tol": 0.06297023,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.1017720632,
+        "_store_covariance": false,
+        "_tol": 0.06297023
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "281": {
+        "number": 281,
+        "value": 0.5419449388,
+        "duration": "02:38",
+        "tol_svd": 0.0002383568,
+        "_covariance_estimator": "none",
+        "_n_components": null,
+        "_priors": null,
+        "_pruned": null,
+        "_shrinkage": null,
+        "_solver": "svd",
+        "_store_covariance": false,
+        "_tol": 0.0002383568
+    }
+}

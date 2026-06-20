@@ -1,0 +1,31 @@
+{
+    "413": {
+        "number": 413,
+        "value": 0.529373058,
+        "duration": "18:34",
+        "C": 0.0012250954,
+        "class_weight_svc": "balanced",
+        "coef0": 0.049288665,
+        "degree": 8,
+        "gamma": "scale",
+        "kernel": "poly",
+        "shrinking": true,
+        "tol": 0.0356981615,
+        "_C": 0.0012250954,
+        "_break_ties": false,
+        "_cache_size": 200,
+        "_class_weight": "balanced",
+        "_coef0": 0.049288665,
+        "_decision_function_shape": "ovr",
+        "_degree": 8,
+        "_gamma": "scale",
+        "_kernel": "poly",
+        "_max_iter": -1,
+        "_probability": true,
+        "_pruned": null,
+        "_random_state": null,
+        "_shrinking": true,
+        "_tol": 0.0356981615,
+        "_verbose": false
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "201": {
+        "number": 201,
+        "value": 0.5586769517,
+        "duration": "00:40",
+        "alpha": 0.2281716881,
+        "binarize": 0.6721954588,
+        "fit_prior": true,
+        "_alpha": 0.2281716881,
+        "_binarize": 0.6721954588,
+        "_class_prior": null,
+        "_fit_prior": true,
+        "_force_alpha": "warn",
+        "_pruned": null
+    }
+}

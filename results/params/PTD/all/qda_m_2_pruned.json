@@ -1,0 +1,14 @@
+{
+    "382": {
+        "number": 382,
+        "value": 0.5442918231,
+        "duration": "01:03",
+        "reg_param": 0.3341694965,
+        "tol": 0.000119184,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.3341694965,
+        "_store_covariance": false,
+        "_tol": 0.000119184
+    }
+}

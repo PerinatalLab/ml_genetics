@@ -1,0 +1,26 @@
+{
+    "308": {
+        "number": 308,
+        "value": 0.534873008,
+        "duration": "41:58",
+        "algorithm": "kd_tree",
+        "leaf_size": 27,
+        "metric_auto": null,
+        "metric_ball": null,
+        "metric_brute": null,
+        "metric_kd": "minkowski",
+        "n_neighbors": 15,
+        "p": 1.7065922394,
+        "weights_brute": null,
+        "weights_kd": "uniform",
+        "_algorithm": "kd_tree",
+        "_leaf_size": 27,
+        "_metric": "minkowski",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 15,
+        "_p": 1.7065922394,
+        "_pruned": null,
+        "_weights": "uniform"
+    }
+}

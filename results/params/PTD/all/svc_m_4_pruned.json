@@ -1,0 +1,31 @@
+{
+    "409": {
+        "number": 409,
+        "value": 0.5381572069,
+        "duration": "06:26",
+        "C": 0.3471408523,
+        "class_weight_svc": "balanced",
+        "coef0": 0.7544027905,
+        "degree": 10,
+        "gamma": "scale",
+        "kernel": "poly",
+        "shrinking": true,
+        "tol": 5.867e-07,
+        "_C": 0.3471408523,
+        "_break_ties": false,
+        "_cache_size": 200,
+        "_class_weight": "balanced",
+        "_coef0": 0.7544027905,
+        "_decision_function_shape": "ovr",
+        "_degree": 10,
+        "_gamma": "scale",
+        "_kernel": "poly",
+        "_max_iter": -1,
+        "_probability": true,
+        "_pruned": null,
+        "_random_state": null,
+        "_shrinking": true,
+        "_tol": 5.867e-07,
+        "_verbose": false
+    }
+}

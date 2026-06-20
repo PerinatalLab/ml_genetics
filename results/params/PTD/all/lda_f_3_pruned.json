@@ -1,0 +1,16 @@
+{
+    "263": {
+        "number": 263,
+        "value": 0.5426039813,
+        "duration": "01:02",
+        "tol_svd": 1.7114e-06,
+        "_covariance_estimator": "none",
+        "_n_components": null,
+        "_priors": null,
+        "_pruned": null,
+        "_shrinkage": null,
+        "_solver": "svd",
+        "_store_covariance": false,
+        "_tol": 1.7114e-06
+    }
+}

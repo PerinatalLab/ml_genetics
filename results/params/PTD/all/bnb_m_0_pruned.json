@@ -1,0 +1,16 @@
+{
+    "306": {
+        "number": 306,
+        "value": 0.5552056718,
+        "duration": "00:53",
+        "alpha": 0.1104409439,
+        "binarize": 0.749694018,
+        "fit_prior": false,
+        "_alpha": 0.1104409439,
+        "_binarize": 0.749694018,
+        "_class_prior": null,
+        "_fit_prior": false,
+        "_force_alpha": "warn",
+        "_pruned": null
+    }
+}

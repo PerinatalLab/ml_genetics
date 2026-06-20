@@ -1,0 +1,14 @@
+{
+    "32": {
+        "number": 32,
+        "value": 0.520475838,
+        "duration": "02:31",
+        "reg_param": 0.8628311306,
+        "tol": 0.1086590644,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.8628311306,
+        "_store_covariance": false,
+        "_tol": 0.1086590644
+    }
+}

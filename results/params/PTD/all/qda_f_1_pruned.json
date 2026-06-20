@@ -1,0 +1,14 @@
+{
+    "307": {
+        "number": 307,
+        "value": 0.5275194277,
+        "duration": "01:09",
+        "reg_param": 0.1855222931,
+        "tol": 1.15051e-05,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.1855222931,
+        "_store_covariance": false,
+        "_tol": 1.15051e-05
+    }
+}

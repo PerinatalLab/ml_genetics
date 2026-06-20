@@ -1,0 +1,14 @@
+{
+    "274": {
+        "number": 274,
+        "value": 0.5323459444,
+        "duration": "01:05",
+        "reg_param": 0.1295298534,
+        "tol": 7.545e-05,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.1295298534,
+        "_store_covariance": false,
+        "_tol": 7.545e-05
+    }
+}

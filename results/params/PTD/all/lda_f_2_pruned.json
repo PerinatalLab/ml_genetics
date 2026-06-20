@@ -1,0 +1,16 @@
+{
+    "92": {
+        "number": 92,
+        "value": 0.5347850476,
+        "duration": "00:59",
+        "tol_svd": 2.49735e-05,
+        "_covariance_estimator": "none",
+        "_n_components": null,
+        "_priors": null,
+        "_pruned": null,
+        "_shrinkage": null,
+        "_solver": "svd",
+        "_store_covariance": false,
+        "_tol": 2.49735e-05
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "402": {
+        "number": 402,
+        "value": 0.539344893,
+        "duration": "03:22",
+        "tol_svd": 0.0015274285,
+        "_covariance_estimator": "none",
+        "_n_components": null,
+        "_priors": null,
+        "_pruned": null,
+        "_shrinkage": null,
+        "_solver": "svd",
+        "_store_covariance": false,
+        "_tol": 0.0015274285
+    }
+}

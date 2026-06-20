@@ -1,0 +1,16 @@
+{
+    "23": {
+        "number": 23,
+        "value": 0.5430025199,
+        "duration": "01:12",
+        "tol_svd": 1.3662e-05,
+        "_covariance_estimator": "none",
+        "_n_components": null,
+        "_priors": null,
+        "_pruned": null,
+        "_shrinkage": null,
+        "_solver": "svd",
+        "_store_covariance": false,
+        "_tol": 1.3662e-05
+    }
+}

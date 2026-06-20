@@ -1,0 +1,14 @@
+{
+    "273": {
+        "number": 273,
+        "value": 0.5184614119,
+        "duration": "01:03",
+        "reg_param": 0.6765855171,
+        "tol": 0.0006706329,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.6765855171,
+        "_store_covariance": false,
+        "_tol": 0.0006706329
+    }
+}

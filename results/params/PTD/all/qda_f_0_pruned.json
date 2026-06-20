@@ -1,0 +1,14 @@
+{
+    "398": {
+        "number": 398,
+        "value": 0.5223299089,
+        "duration": "01:03",
+        "reg_param": 0.2583798257,
+        "tol": 6.03656e-05,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.2583798257,
+        "_store_covariance": false,
+        "_tol": 6.03656e-05
+    }
+}

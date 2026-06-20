@@ -1,0 +1,24 @@
+{
+    "349": {
+        "number": 349,
+        "value": 0.5259243645,
+        "duration": "00:33",
+        "ccp_alpha": 0.0103376234,
+        "criterion": "gini",
+        "max_features": null,
+        "max_leaf_nodes": 9,
+        "splitter": "random",
+        "_ccp_alpha": 0.0103376234,
+        "_class_weight": null,
+        "_criterion": "gini",
+        "_max_depth": null,
+        "_max_features": null,
+        "_max_leaf_nodes": 9,
+        "_min_impurity_decrease": 0.0,
+        "_min_samples_leaf": 1,
+        "_min_samples_split": 2,
+        "_min_weight_fraction_leaf": 0.0,
+        "_random_state": null,
+        "_splitter": "random"
+    }
+}

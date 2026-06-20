@@ -1,0 +1,26 @@
+{
+    "91": {
+        "number": 91,
+        "value": 0.5470071426,
+        "duration": "09:30",
+        "algorithm": "ball_tree",
+        "leaf_size": 24,
+        "metric_auto": null,
+        "metric_ball": "dice",
+        "metric_brute": null,
+        "metric_kd": null,
+        "n_neighbors": 7,
+        "p": null,
+        "weights_brute": null,
+        "weights_kd": null,
+        "_algorithm": "ball_tree",
+        "_leaf_size": 24,
+        "_metric": "dice",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 7,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": null
+    }
+}

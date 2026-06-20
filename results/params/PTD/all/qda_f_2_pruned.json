@@ -1,0 +1,14 @@
+{
+    "170": {
+        "number": 170,
+        "value": 0.5243757599,
+        "duration": "01:38",
+        "reg_param": 0.1005729024,
+        "tol": 0.0026804331,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.1005729024,
+        "_store_covariance": false,
+        "_tol": 0.0026804331
+    }
+}

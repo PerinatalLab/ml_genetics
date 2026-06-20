@@ -1,0 +1,26 @@
+{
+    "230": {
+        "number": 230,
+        "value": 0.5343727055,
+        "duration": "10:16",
+        "algorithm": "ball_tree",
+        "leaf_size": 29,
+        "metric_auto": null,
+        "metric_ball": "dice",
+        "metric_brute": null,
+        "metric_kd": null,
+        "n_neighbors": 13,
+        "p": null,
+        "weights_brute": null,
+        "weights_kd": null,
+        "_algorithm": "ball_tree",
+        "_leaf_size": 29,
+        "_metric": "dice",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 13,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": null
+    }
+}
