@@ -1,0 +1,16 @@
+{
+    "153": {
+        "number": 153,
+        "value": 0.8088218882,
+        "duration": "00:07",
+        "alpha": 5.7448e-06,
+        "binarize": 0.7577639679,
+        "fit_prior": false,
+        "_alpha": 5.7448e-06,
+        "_binarize": 0.7577639679,
+        "_class_prior": null,
+        "_fit_prior": false,
+        "_force_alpha": true,
+        "_pruned": null
+    }
+}

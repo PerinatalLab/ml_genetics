@@ -1,0 +1,16 @@
+{
+    "112": {
+        "number": 112,
+        "value": 0.7995242207,
+        "duration": "00:08",
+        "alpha": 0.0061971044,
+        "binarize": 0.9373866763,
+        "fit_prior": false,
+        "_alpha": 0.0061971044,
+        "_binarize": 0.9373866763,
+        "_class_prior": null,
+        "_fit_prior": false,
+        "_force_alpha": true,
+        "_pruned": null
+    }
+}

@@ -10,6 +10,8 @@ resources/**
 workflow/.snakemake/**
 !results/
 results/**
+!results/params
+!results/params/**
 !results/Report
 !results/Report/
 !results/Report/**

@@ -1,0 +1,16 @@
+{
+    "66": {
+        "number": 66,
+        "value": 0.8076914718,
+        "duration": "00:13",
+        "alpha": 0.0038926793,
+        "binarize": 0.8846143563,
+        "fit_prior": true,
+        "_alpha": 0.0038926793,
+        "_binarize": 0.8846143563,
+        "_class_prior": null,
+        "_fit_prior": true,
+        "_force_alpha": true,
+        "_pruned": null
+    }
+}

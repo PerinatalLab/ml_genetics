@@ -1,0 +1,16 @@
+{
+    "473": {
+        "number": 473,
+        "value": 0.7986675242,
+        "duration": "00:07",
+        "alpha": 0.1894350011,
+        "binarize": 0.9698854802,
+        "fit_prior": false,
+        "_alpha": 0.1894350011,
+        "_binarize": 0.9698854802,
+        "_class_prior": null,
+        "_fit_prior": false,
+        "_force_alpha": true,
+        "_pruned": null
+    }
+}

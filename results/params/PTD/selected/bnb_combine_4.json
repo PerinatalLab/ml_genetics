@@ -1,0 +1,16 @@
+{
+    "138": {
+        "number": 138,
+        "value": 0.8043742327,
+        "duration": "00:16",
+        "alpha": 1.8579e-06,
+        "binarize": 0.6192828446,
+        "fit_prior": false,
+        "_alpha": 1.8579e-06,
+        "_binarize": 0.6192828446,
+        "_class_prior": null,
+        "_fit_prior": false,
+        "_force_alpha": true,
+        "_pruned": null
+    }
+}

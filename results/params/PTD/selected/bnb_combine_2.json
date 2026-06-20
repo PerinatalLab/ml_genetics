@@ -1,0 +1,16 @@
+{
+    "302": {
+        "number": 302,
+        "value": 0.8158493248,
+        "duration": "00:12",
+        "alpha": 5.6324e-06,
+        "binarize": 0.8064211055,
+        "fit_prior": false,
+        "_alpha": 5.6324e-06,
+        "_binarize": 0.8064211055,
+        "_class_prior": null,
+        "_fit_prior": false,
+        "_force_alpha": true,
+        "_pruned": null
+    }
+}
