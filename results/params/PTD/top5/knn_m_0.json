@@ -1,0 +1,26 @@
+{
+    "262": {
+        "number": 262,
+        "value": 0.5644167004,
+        "duration": "00:02",
+        "algorithm": "kd_tree",
+        "leaf_size": 29,
+        "metric_auto": null,
+        "metric_ball": null,
+        "metric_brute": null,
+        "metric_kd": "l1",
+        "n_neighbors": 11,
+        "p": null,
+        "weights_brute": null,
+        "weights_kd": "distance",
+        "_algorithm": "kd_tree",
+        "_leaf_size": 29,
+        "_metric": "l1",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 11,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": "distance"
+    }
+}

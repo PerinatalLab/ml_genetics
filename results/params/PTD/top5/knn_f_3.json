@@ -1,0 +1,26 @@
+{
+    "419": {
+        "number": 419,
+        "value": 0.5277035719,
+        "duration": "00:02",
+        "algorithm": "kd_tree",
+        "leaf_size": 30,
+        "metric_auto": null,
+        "metric_ball": null,
+        "metric_brute": null,
+        "metric_kd": "minkowski",
+        "n_neighbors": 8,
+        "p": 1.9857333123,
+        "weights_brute": null,
+        "weights_kd": "uniform",
+        "_algorithm": "kd_tree",
+        "_leaf_size": 30,
+        "_metric": "minkowski",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 8,
+        "_p": 1.9857333123,
+        "_pruned": null,
+        "_weights": "uniform"
+    }
+}

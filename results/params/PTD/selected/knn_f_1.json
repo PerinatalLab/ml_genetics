@@ -1,0 +1,26 @@
+{
+    "270": {
+        "number": 270,
+        "value": 0.6722045029,
+        "duration": "00:58",
+        "algorithm": "auto",
+        "leaf_size": 35,
+        "metric_auto": "minkowski",
+        "metric_ball": null,
+        "metric_brute": null,
+        "metric_kd": null,
+        "n_neighbors": 20,
+        "p": 1.1321739828,
+        "weights_brute": "distance",
+        "weights_kd": null,
+        "_algorithm": "auto",
+        "_leaf_size": 35,
+        "_metric": "minkowski",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 20,
+        "_p": 1.1321739828,
+        "_pruned": null,
+        "_weights": "distance"
+    }
+}

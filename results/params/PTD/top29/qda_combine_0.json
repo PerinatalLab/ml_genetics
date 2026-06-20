@@ -1,0 +1,17 @@
+{
+    "286": {
+        "number": 286,
+        "value": 0.5631458998,
+        "duration": "00:03",
+        "shrinkage": 0.915001904,
+        "tol": 0.0002639548,
+        "_covariance_estimator": null,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.0,
+        "_shrinkage": 0.915001904,
+        "_solver": "eigen",
+        "_store_covariance": false,
+        "_tol": 0.0002639548
+    }
+}

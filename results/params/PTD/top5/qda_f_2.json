@@ -1,0 +1,19 @@
+{
+    "469": {
+        "number": 469,
+        "value": 0.5130798193,
+        "duration": "00:01",
+        "shrinkage": null,
+        "top_reg_param": 0.010173511,
+        "top_solver": "svd",
+        "top_tol": 7.09749e-05,
+        "_covariance_estimator": null,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.010173511,
+        "_shrinkage": null,
+        "_solver": "svd",
+        "_store_covariance": false,
+        "_tol": 7.09749e-05
+    }
+}

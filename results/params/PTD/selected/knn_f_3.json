@@ -1,0 +1,26 @@
+{
+    "128": {
+        "number": 128,
+        "value": 0.6766483404,
+        "duration": "00:10",
+        "algorithm": "brute",
+        "leaf_size": 26,
+        "metric_auto": null,
+        "metric_ball": null,
+        "metric_brute": "nan_euclidean",
+        "metric_kd": null,
+        "n_neighbors": 20,
+        "p": null,
+        "weights_brute": "distance",
+        "weights_kd": null,
+        "_algorithm": "brute",
+        "_leaf_size": 26,
+        "_metric": "nan_euclidean",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 20,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": "distance"
+    }
+}

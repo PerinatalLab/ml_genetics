@@ -1,0 +1,19 @@
+{
+    "185": {
+        "number": 185,
+        "value": 0.555486734,
+        "duration": "00:01",
+        "shrinkage": null,
+        "top_reg_param": 0.9797703558,
+        "top_solver": "svd",
+        "top_tol": 0.0065262708,
+        "_covariance_estimator": null,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.9797703558,
+        "_shrinkage": null,
+        "_solver": "svd",
+        "_store_covariance": false,
+        "_tol": 0.0065262708
+    }
+}

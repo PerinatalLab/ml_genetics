@@ -1,0 +1,23 @@
+{
+    "484": {
+        "number": 484,
+        "value": 0.5255265878,
+        "duration": "00:01",
+        "covariance_estimator_e": "OAS",
+        "covariance_estimator_lsqr": null,
+        "solver_lda": "eigen",
+        "tol_svd": 0.0003551333,
+        "_covariance_estimator": "OAS",
+        "_covariance_estimator__assume_centered": false,
+        "_covariance_estimator__block_size": null,
+        "_covariance_estimator__shrinkage": null,
+        "_covariance_estimator__store_precision": true,
+        "_n_components": null,
+        "_priors": null,
+        "_pruned": null,
+        "_shrinkage": null,
+        "_solver": "eigen",
+        "_store_covariance": false,
+        "_tol": 0.0003551333
+    }
+}

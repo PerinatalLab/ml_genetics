@@ -1,0 +1,26 @@
+{
+    "14": {
+        "number": 14,
+        "value": 0.5511205777,
+        "duration": "00:06",
+        "algorithm": "kd_tree",
+        "leaf_size": 30,
+        "metric_auto": null,
+        "metric_ball": null,
+        "metric_brute": null,
+        "metric_kd": "l1",
+        "n_neighbors": 14,
+        "p": null,
+        "weights_brute": null,
+        "weights_kd": "uniform",
+        "_algorithm": "kd_tree",
+        "_leaf_size": 30,
+        "_metric": "l1",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 14,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": "uniform"
+    }
+}

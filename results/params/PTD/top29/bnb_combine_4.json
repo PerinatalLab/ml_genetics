@@ -1,0 +1,16 @@
+{
+    "403": {
+        "number": 403,
+        "value": 0.5720083173,
+        "duration": "00:03",
+        "alpha": 1.4027e-06,
+        "binarize": 0.9607975711,
+        "fit_prior": true,
+        "_alpha": 1.4027e-06,
+        "_binarize": 0.9607975711,
+        "_class_prior": null,
+        "_fit_prior": true,
+        "_force_alpha": true,
+        "_pruned": null
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "356": {
+        "number": 356,
+        "value": 0.5486825025,
+        "duration": "00:02",
+        "algorithm": "brute",
+        "leaf_size": 54,
+        "metric_auto": null,
+        "metric_ball": null,
+        "metric_brute": "cosine",
+        "metric_kd": null,
+        "n_neighbors": 17,
+        "p": null,
+        "weights_brute": "distance",
+        "weights_kd": null,
+        "_algorithm": "brute",
+        "_leaf_size": 54,
+        "_metric": "cosine",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 17,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": "distance"
+    }
+}

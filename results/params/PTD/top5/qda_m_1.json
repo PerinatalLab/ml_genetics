@@ -1,0 +1,19 @@
+{
+    "144": {
+        "number": 144,
+        "value": 0.5630713023,
+        "duration": "00:01",
+        "shrinkage": null,
+        "top_reg_param": 0.0452459295,
+        "top_solver": "svd",
+        "top_tol": 3.998e-05,
+        "_covariance_estimator": null,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.0452459295,
+        "_shrinkage": null,
+        "_solver": "svd",
+        "_store_covariance": false,
+        "_tol": 3.998e-05
+    }
+}

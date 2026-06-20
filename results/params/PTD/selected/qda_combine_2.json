@@ -1,0 +1,17 @@
+{
+    "372": {
+        "number": 372,
+        "value": 0.7970842364,
+        "duration": "00:11",
+        "shrinkage": 0.5509658845,
+        "tol": 2.73217e-05,
+        "_covariance_estimator": null,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.0,
+        "_shrinkage": 0.5509658845,
+        "_solver": "eigen",
+        "_store_covariance": false,
+        "_tol": 2.73217e-05
+    }
+}

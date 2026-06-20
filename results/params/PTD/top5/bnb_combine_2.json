@@ -1,0 +1,16 @@
+{
+    "465": {
+        "number": 465,
+        "value": 0.5501055819,
+        "duration": "00:03",
+        "alpha": 6.002e-07,
+        "binarize": 0.9057510724,
+        "fit_prior": true,
+        "_alpha": 6.002e-07,
+        "_binarize": 0.9057510724,
+        "_class_prior": null,
+        "_fit_prior": true,
+        "_force_alpha": true,
+        "_pruned": null
+    }
+}

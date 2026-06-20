@@ -1,0 +1,26 @@
+{
+    "430": {
+        "number": 430,
+        "value": 0.5624743755,
+        "duration": "00:03",
+        "algorithm": "ball_tree",
+        "leaf_size": 46,
+        "metric_auto": null,
+        "metric_ball": "jaccard",
+        "metric_brute": null,
+        "metric_kd": null,
+        "n_neighbors": 15,
+        "p": null,
+        "weights_brute": null,
+        "weights_kd": "distance",
+        "_algorithm": "ball_tree",
+        "_leaf_size": 46,
+        "_metric": "jaccard",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 15,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": "distance"
+    }
+}

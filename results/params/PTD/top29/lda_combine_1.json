@@ -1,0 +1,23 @@
+{
+    "342": {
+        "number": 342,
+        "value": 0.5594838676,
+        "duration": "00:04",
+        "covariance_estimator_e": null,
+        "covariance_estimator_lsqr": null,
+        "solver_lda": "svd",
+        "tol_svd": 9.94527e-05,
+        "_covariance_estimator": "none",
+        "_covariance_estimator__assume_centered": null,
+        "_covariance_estimator__block_size": null,
+        "_covariance_estimator__shrinkage": null,
+        "_covariance_estimator__store_precision": null,
+        "_n_components": null,
+        "_priors": null,
+        "_pruned": null,
+        "_shrinkage": null,
+        "_solver": "svd",
+        "_store_covariance": false,
+        "_tol": 9.94527e-05
+    }
+}

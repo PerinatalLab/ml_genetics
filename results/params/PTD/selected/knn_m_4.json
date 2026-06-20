@@ -1,0 +1,26 @@
+{
+    "118": {
+        "number": 118,
+        "value": 0.6621040312,
+        "duration": "00:10",
+        "algorithm": "kd_tree",
+        "leaf_size": 48,
+        "metric_auto": null,
+        "metric_ball": null,
+        "metric_brute": null,
+        "metric_kd": "cityblock",
+        "n_neighbors": 20,
+        "p": null,
+        "weights_brute": null,
+        "weights_kd": null,
+        "_algorithm": "kd_tree",
+        "_leaf_size": 48,
+        "_metric": "cityblock",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 20,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": null
+    }
+}

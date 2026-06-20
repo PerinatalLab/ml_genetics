@@ -1,0 +1,16 @@
+{
+    "284": {
+        "number": 284,
+        "value": 0.5216823204,
+        "duration": "00:01",
+        "shrinkage": 0.8039103867,
+        "tol": 0.0405714552,
+        "_covariance_estimator": null,
+        "_priors": null,
+        "_reg_param": 0.0,
+        "_shrinkage": 0.8039103867,
+        "_solver": "eigen",
+        "_store_covariance": false,
+        "_tol": 0.0405714552
+    }
+}

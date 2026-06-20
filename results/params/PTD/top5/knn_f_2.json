@@ -1,0 +1,26 @@
+{
+    "381": {
+        "number": 381,
+        "value": 0.5306713187,
+        "duration": "00:02",
+        "algorithm": "auto",
+        "leaf_size": 34,
+        "metric_auto": "manhattan",
+        "metric_ball": null,
+        "metric_brute": null,
+        "metric_kd": null,
+        "n_neighbors": 5,
+        "p": null,
+        "weights_brute": null,
+        "weights_kd": null,
+        "_algorithm": "auto",
+        "_leaf_size": 34,
+        "_metric": "manhattan",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 5,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": null
+    }
+}

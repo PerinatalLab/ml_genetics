@@ -1,0 +1,19 @@
+{
+    "463": {
+        "number": 463,
+        "value": 0.5540013921,
+        "duration": "00:02",
+        "shrinkage": 0.5676795128,
+        "top_reg_param": 0.1806637509,
+        "top_solver": "eigen",
+        "top_tol": 5.131e-07,
+        "_covariance_estimator": null,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.1806637509,
+        "_shrinkage": 0.5676795128,
+        "_solver": "eigen",
+        "_store_covariance": false,
+        "_tol": 5.131e-07
+    }
+}

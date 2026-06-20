@@ -1,0 +1,16 @@
+{
+    "377": {
+        "number": 377,
+        "value": 0.5386074351,
+        "duration": "00:01",
+        "alpha": 8.76967e-05,
+        "binarize": 0.97986769,
+        "fit_prior": false,
+        "_alpha": 8.76967e-05,
+        "_binarize": 0.97986769,
+        "_class_prior": null,
+        "_fit_prior": false,
+        "_force_alpha": true,
+        "_pruned": null
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "231": {
+        "number": 231,
+        "value": 0.5486691395,
+        "duration": "00:03",
+        "shrinkage": 0.9978539955,
+        "top_reg_param": 0.9207902136,
+        "top_solver": "eigen",
+        "top_tol": 9.714e-07,
+        "_covariance_estimator": null,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.9207902136,
+        "_shrinkage": 0.9978539955,
+        "_solver": "eigen",
+        "_store_covariance": false,
+        "_tol": 9.714e-07
+    }
+}

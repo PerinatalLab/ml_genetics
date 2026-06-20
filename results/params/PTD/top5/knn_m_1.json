@@ -1,0 +1,26 @@
+{
+    "224": {
+        "number": 224,
+        "value": 0.5373930231,
+        "duration": "00:02",
+        "algorithm": "auto",
+        "leaf_size": 22,
+        "metric_auto": "euclidean",
+        "metric_ball": null,
+        "metric_brute": null,
+        "metric_kd": null,
+        "n_neighbors": 5,
+        "p": null,
+        "weights_brute": "distance",
+        "weights_kd": null,
+        "_algorithm": "auto",
+        "_leaf_size": 22,
+        "_metric": "euclidean",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 5,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": "distance"
+    }
+}

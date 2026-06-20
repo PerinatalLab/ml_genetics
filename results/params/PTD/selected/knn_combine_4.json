@@ -1,0 +1,26 @@
+{
+    "205": {
+        "number": 205,
+        "value": 0.6689417435,
+        "duration": "00:42",
+        "algorithm": "kd_tree",
+        "leaf_size": 29,
+        "metric_auto": null,
+        "metric_ball": null,
+        "metric_brute": null,
+        "metric_kd": "cityblock",
+        "n_neighbors": 20,
+        "p": null,
+        "weights_brute": null,
+        "weights_kd": "distance",
+        "_algorithm": "kd_tree",
+        "_leaf_size": 29,
+        "_metric": "cityblock",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 20,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": "distance"
+    }
+}

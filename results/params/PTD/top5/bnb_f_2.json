@@ -1,0 +1,16 @@
+{
+    "279": {
+        "number": 279,
+        "value": 0.5162578489,
+        "duration": "00:01",
+        "alpha": 0.0012782388,
+        "binarize": 0.7508389259,
+        "fit_prior": false,
+        "_alpha": 0.0012782388,
+        "_binarize": 0.7508389259,
+        "_class_prior": null,
+        "_fit_prior": false,
+        "_force_alpha": true,
+        "_pruned": null
+    }
+}

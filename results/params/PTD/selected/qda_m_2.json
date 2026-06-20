@@ -1,0 +1,16 @@
+{
+    "15": {
+        "number": 15,
+        "value": 0.7554890835,
+        "duration": "01:20",
+        "shrinkage": 0.4491903549,
+        "tol": 0.0051814604,
+        "_covariance_estimator": null,
+        "_priors": null,
+        "_reg_param": 0.0,
+        "_shrinkage": 0.4491903549,
+        "_solver": "eigen",
+        "_store_covariance": false,
+        "_tol": 0.0051814604
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "400": {
+        "number": 400,
+        "value": 0.5486377146,
+        "duration": "00:02",
+        "algorithm": "auto",
+        "leaf_size": 60,
+        "metric_auto": "euclidean",
+        "metric_ball": null,
+        "metric_brute": null,
+        "metric_kd": null,
+        "n_neighbors": 10,
+        "p": null,
+        "weights_brute": "distance",
+        "weights_kd": null,
+        "_algorithm": "auto",
+        "_leaf_size": 60,
+        "_metric": "euclidean",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 10,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": "distance"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "355": {
+        "number": 355,
+        "value": 0.5623244462,
+        "duration": "00:03",
+        "algorithm": "kd_tree",
+        "leaf_size": 40,
+        "metric_auto": null,
+        "metric_ball": null,
+        "metric_brute": null,
+        "metric_kd": "infinity",
+        "n_neighbors": 18,
+        "p": null,
+        "weights_brute": null,
+        "weights_kd": "distance",
+        "_algorithm": "kd_tree",
+        "_leaf_size": 40,
+        "_metric": "infinity",
+        "_metric_params": null,
+        "_n_jobs": null,
+        "_n_neighbors": 18,
+        "_p": 2.0,
+        "_pruned": null,
+        "_weights": "distance"
+    }
+}

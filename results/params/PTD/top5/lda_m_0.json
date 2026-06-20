@@ -1,0 +1,23 @@
+{
+    "335": {
+        "number": 335,
+        "value": 0.5838119027,
+        "duration": "00:01",
+        "covariance_estimator_e": "SC",
+        "covariance_estimator_lsqr": null,
+        "solver_lda": "eigen",
+        "tol_svd": 0.0063853952,
+        "_covariance_estimator": "SC",
+        "_covariance_estimator__assume_centered": false,
+        "_covariance_estimator__block_size": null,
+        "_covariance_estimator__shrinkage": 0.1,
+        "_covariance_estimator__store_precision": true,
+        "_n_components": null,
+        "_priors": null,
+        "_pruned": null,
+        "_shrinkage": null,
+        "_solver": "eigen",
+        "_store_covariance": false,
+        "_tol": 0.0063853952
+    }
+}

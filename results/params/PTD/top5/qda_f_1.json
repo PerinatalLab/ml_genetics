@@ -1,0 +1,19 @@
+{
+    "322": {
+        "number": 322,
+        "value": 0.5180047226,
+        "duration": "00:01",
+        "shrinkage": 0.6748178844,
+        "top_reg_param": 0.0627948997,
+        "top_solver": "eigen",
+        "top_tol": 0.0019164286,
+        "_covariance_estimator": null,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.0627948997,
+        "_shrinkage": 0.6748178844,
+        "_solver": "eigen",
+        "_store_covariance": false,
+        "_tol": 0.0019164286
+    }
+}

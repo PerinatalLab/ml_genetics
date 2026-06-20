@@ -1,0 +1,31 @@
+{
+    "471": {
+        "number": 471,
+        "value": 0.5739023301,
+        "duration": "00:03",
+        "C": 0.3848466178,
+        "class_weight_svc": null,
+        "coef0": 0.5243120548,
+        "degree": 10,
+        "gamma": "auto",
+        "kernel": "poly",
+        "shrinking": false,
+        "tol": 0.077256828,
+        "_C": 0.3848466178,
+        "_break_ties": false,
+        "_cache_size": 200,
+        "_class_weight": null,
+        "_coef0": 0.5243120548,
+        "_decision_function_shape": "ovr",
+        "_degree": 10,
+        "_gamma": "auto",
+        "_kernel": "poly",
+        "_max_iter": -1,
+        "_probability": true,
+        "_pruned": null,
+        "_random_state": null,
+        "_shrinking": false,
+        "_tol": 0.077256828,
+        "_verbose": false
+    }
+}

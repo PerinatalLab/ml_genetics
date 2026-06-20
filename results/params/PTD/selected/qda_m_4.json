@@ -1,0 +1,17 @@
+{
+    "19": {
+        "number": 19,
+        "value": 0.7576529983,
+        "duration": "01:01",
+        "shrinkage": 0.1139927567,
+        "tol": 3.83903e-05,
+        "_covariance_estimator": null,
+        "_priors": null,
+        "_pruned": null,
+        "_reg_param": 0.0,
+        "_shrinkage": 0.1139927567,
+        "_solver": "eigen",
+        "_store_covariance": false,
+        "_tol": 3.83903e-05
+    }
+}
