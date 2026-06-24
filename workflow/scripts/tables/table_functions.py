@@ -849,3 +849,17 @@ def divide_concur(dfc):
         dfc1, suffixes=(None, "_c"), how="left", left_index=True, right_index=True
     )
     return dfcc
+
+def calc_confusion(pruned_df, npos, nneg):
+    plr = pruned_df.plr
+    nlr = pruned_df.nlr
+    f1 = pruned_df.f1
+    spec = (plr-1)/(plr-nlr)
+    sens = 1-nlr*spec
+    if not(0<sens<1 and 0<spec<1):
+        raise ValueError("Spec/Sens invalid")
+    tp = sens * npos
+    fn = (1-sens)*npos
+    tn = spec*nneg
+    fp = (1-spec) * nneg
+    return tn, fp, fn, tp
